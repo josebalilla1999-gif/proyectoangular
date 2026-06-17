@@ -27,4 +27,6 @@ export interface Pokemon {
   name: string;
   types: any[];
   abilities: any[];
+  height: number;
+  weight: number;
 }

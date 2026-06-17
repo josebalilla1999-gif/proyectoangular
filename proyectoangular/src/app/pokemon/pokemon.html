@@ -1,4 +1,4 @@
-<h2>Pokémon</h2>
+<h2>Pokémon: {{ pokemonList.length }}</h2>
 
 <table border="1" cellpadding="8">
   <thead>
@@ -8,7 +8,9 @@
       <th>Tipo secundario</th>
       <th>Habilidad 1</th>
       <th>Habilidad 2</th>
-      <th>Habilidad 3</th>
+      <th>Habilidad oculta</th>
+      <th>Altura</th>
+      <th>Peso</th>
     </tr>
   </thead>
 
@@ -38,10 +40,16 @@
         <td>
           {{ pokemon.abilities?.[2]?.ability?.name || '-' }}
         </td>
+        <td>
+          {{ pokemon.height }}
+        </td>
+        <td>
+          {{ pokemon.weight }}
+        </td>
       </tr>
     } @empty {
       <tr>
-        <td colspan="6">No hay Pokémon cargados</td>
+        <td colspan="8">No hay Pokémon cargados</td>
       </tr>
     }
   </tbody>
