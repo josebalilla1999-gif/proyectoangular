@@ -1,0 +1,48 @@
+<h2>Pokémon</h2>
+
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Tipo primario</th>
+      <th>Tipo secundario</th>
+      <th>Habilidad 1</th>
+      <th>Habilidad 2</th>
+      <th>Habilidad 3</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (pokemon of pokemonList; track pokemon.name) {
+      <tr>
+        <td>{{ pokemon.name }}</td>
+
+        <!-- TIPOS -->
+        <td>
+          {{ pokemon.types?.[0]?.type?.name }}
+        </td>
+
+        <td>
+          {{ pokemon.types?.[1]?.type?.name || '-' }}
+        </td>
+
+        <!-- HABILIDADES -->
+        <td>
+          {{ pokemon.abilities?.[0]?.ability?.name }}
+        </td>
+
+        <td>
+          {{ pokemon.abilities?.[1]?.ability?.name || '-' }}
+        </td>
+
+        <td>
+          {{ pokemon.abilities?.[2]?.ability?.name || '-' }}
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6">No hay Pokémon cargados</td>
+      </tr>
+    }
+  </tbody>
+</table>
