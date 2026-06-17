@@ -1,42 +1,84 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Pokemon, PokemonService } from '../services/pokemon';
 import { CommonModule } from '@angular/common';
-import { forkJoin } from 'rxjs';
+import { BehaviorSubject, forkJoin } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon',
   imports: [CommonModule],
-  templateUrl: './pokemon.html'
+  templateUrl: './pokemon.html',
+  styleUrl: './pokemon.css'
 })
 export class PokemonComponent implements OnInit {
 
   pokemonList: Pokemon[] = [];
+  currentPage = 0;
+  pageSize = 50;
+  private page$ = new BehaviorSubject<number>(0);
 
   constructor(private pokemonService: PokemonService, private cdr: ChangeDetectorRef) { }
-  
+
 
   ngOnInit(): void {
-    console.log('Iniciando carga');
-    this.loadPokemon();
+
+    this.page$
+      .pipe(
+        switchMap(page => {
+
+          const offset = page * this.pageSize;
+
+          console.log('PAGE STREAM:', page, 'OFFSET:', offset);
+          console.log({
+            page: this.currentPage,
+            offset
+          });
+
+          return this.pokemonService.getPokemonList(this.pageSize, offset)
+            .pipe(
+              switchMap(res => {
+
+                console.log(
+                  'Página:', page,
+                  'Primer Pokémon:', res.results[0]?.name,
+                  'Último Pokémon:', res.results[res.results.length - 1]?.name
+                );
+                const requests = res.results.map((p: any) =>
+                  this.pokemonService.getPokemon(p.name)
+                );
+
+                return forkJoin<Pokemon[]>(requests);
+              })
+            );
+        })
+      )
+      .subscribe(fullData => {
+
+        this.pokemonList = fullData.map((p: any) => ({
+          ...p,
+          sprite: p.sprites?.front_default
+        }));
+        this.cdr.detectChanges();
+      });
+      
+  }
+  formatHeight(height: number): string {
+    return `${height / 10} m`;
   }
 
-  loadPokemon(): void {
-  console.log('LOAD START');
+  formatWeight(weight: number): string {
+    return `${weight / 10} kg`;
+  }
 
-  this.pokemonService.getPokemonList(1350).subscribe(res => {
-    console.log('LIST RECEIVED', res.results.length);
+  nextPage(): void {
+    this.currentPage++;
+    this.page$.next(this.page$.value + 1);
+  }
 
-    const requests = res.results.map((p: any) =>
-      this.pokemonService.getPokemon(p.name)
-    );
-
-    forkJoin<Pokemon[]>(requests).subscribe(fullData => {
-      console.log('DETAILS RECEIVED', fullData.length);
-
-      this.pokemonList = [...fullData];
-      console.log('ASSIGNED', this.pokemonList.length);
-      this.cdr.detectChanges();
-    });
-  });
-}
+  prevPage(): void {
+    if (this.page$.value > 0) {
+      this.currentPage--;
+      this.page$.next(this.page$.value - 1);
+    }
+  }
 }

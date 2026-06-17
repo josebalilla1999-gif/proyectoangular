@@ -1,56 +1,68 @@
-<h2>Pokémon: {{ pokemonList.length }}</h2>
+<h2 class="title">Pokémon</h2>
 
-<table border="1" cellpadding="8">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Tipo primario</th>
-      <th>Tipo secundario</th>
-      <th>Habilidad 1</th>
-      <th>Habilidad 2</th>
-      <th>Habilidad oculta</th>
-      <th>Altura</th>
-      <th>Peso</th>
-    </tr>
-  </thead>
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 0">
+    ◀ Anterior
+  </button>
 
-  <tbody>
-    @for (pokemon of pokemonList; track pokemon.name) {
+  <span>Página {{ currentPage + 1 }}</span>
+
+  <button (click)="nextPage()">
+    Siguiente ▶
+  </button>
+</div>
+
+<div class="table-container">
+  <table class="pokemon-table">
+    <thead>
       <tr>
-        <td>{{ pokemon.name }}</td>
-
-        <!-- TIPOS -->
-        <td>
-          {{ pokemon.types?.[0]?.type?.name }}
-        </td>
-
-        <td>
-          {{ pokemon.types?.[1]?.type?.name || '-' }}
-        </td>
-
-        <!-- HABILIDADES -->
-        <td>
-          {{ pokemon.abilities?.[0]?.ability?.name }}
-        </td>
-
-        <td>
-          {{ pokemon.abilities?.[1]?.ability?.name || '-' }}
-        </td>
-
-        <td>
-          {{ pokemon.abilities?.[2]?.ability?.name || '-' }}
-        </td>
-        <td>
-          {{ pokemon.height }}
-        </td>
-        <td>
-          {{ pokemon.weight }}
-        </td>
+        <th>Sprite</th>
+        <th>Nombre</th>
+        <th>Tipo 1</th>
+        <th>Tipo 2</th>
+        <th>Habilidad 1</th>
+        <th>Habilidad 2</th>
+        <th>Habilidad 3</th>
+        <th>Altura</th>
+        <th>Peso</th>
       </tr>
-    } @empty {
+    </thead>
+
+    <tbody>
+      @for (pokemon of pokemonList; track pokemon.name) {
       <tr>
-        <td colspan="8">No hay Pokémon cargados</td>
+        <td>
+          @if (pokemon.sprite) {
+          <img [src]="pokemon.sprite" [alt]="pokemon.name" class="sprite" />
+          } @else {
+          -
+          }
+        </td>
+        <td class="name">{{ pokemon.name }}</td>
+
+        <td>
+          <span class="badge type">
+            {{ pokemon.types?.[0]?.type?.name }}
+          </span>
+        </td>
+
+        <td>
+          <span class="badge type secondary">
+            {{ pokemon.types?.[1]?.type?.name || '-' }}
+          </span>
+        </td>
+
+        <td>{{ pokemon.abilities?.[0]?.ability?.name }}</td>
+        <td>{{ pokemon.abilities?.[1]?.ability?.name || '-' }}</td>
+        <td>{{ pokemon.abilities?.[2]?.ability?.name || '-' }}</td>
+        <td>{{ formatHeight(pokemon.height) }}</td>
+        <td>{{ formatWeight(pokemon.weight) }}</td>
       </tr>
-    }
-  </tbody>
-</table>
+      } @empty {
+      <tr>
+        <td colspan="9" class="empty">No hay Pokémon cargados</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

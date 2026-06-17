@@ -13,17 +13,18 @@ export class PokemonService {
   constructor(private http: HttpClient) {}
 
   // Lista de pokémon
-  getPokemonList(limit: number = 1350, offset: number = 0): Observable<any> {
+  getPokemonList(limit: number = 50, offset: number = 0): Observable<any> {
     return this.http.get(`${this.apiUrl}/pokemon?limit=${limit}&offset=${offset}`);
   }
 
   // Detalle de un Pokémon
-  getPokemon(name: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/pokemon/${name}`);
+  getPokemon(name: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${this.apiUrl}/pokemon/${name}`);
   }
 }
 
 export interface Pokemon {
+  sprite: string;
   name: string;
   types: any[];
   abilities: any[];
