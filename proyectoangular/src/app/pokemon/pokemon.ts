@@ -3,6 +3,7 @@ import { Pokemon, PokemonService } from '../services/pokemon';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { PokemonMapperService } from '../services/traduccion';
 
 @Component({
   selector: 'app-pokemon',
@@ -17,7 +18,7 @@ export class PokemonComponent implements OnInit {
   pageSize = 50;
   private page$ = new BehaviorSubject<number>(0);
 
-  constructor(private pokemonService: PokemonService, private cdr: ChangeDetectorRef) { }
+  constructor(private pokemonService: PokemonService, private mapper: PokemonMapperService, private cdr: ChangeDetectorRef) { }
 
 
   ngOnInit(): void {
@@ -54,10 +55,9 @@ export class PokemonComponent implements OnInit {
       )
       .subscribe(fullData => {
 
-        this.pokemonList = fullData.map((p: any) => ({
-          ...p,
-          sprite: p.sprites?.front_default
-        }));
+        this.pokemonList = fullData.map(p =>
+          this.mapper.mapPokemon(p)
+        );
         this.cdr.detectChanges();
       });
       
