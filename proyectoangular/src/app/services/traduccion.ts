@@ -350,7 +350,7 @@ export class PokemonMapperService {
     return {
       ...p,
 
-      sprite: p.sprites?.front_default,
+      sprite: p.sprites?.other.home.front_default,
 
       // tipos traducidos
       types: p.types.map((t: any) => ({
@@ -376,7 +376,7 @@ export class PokemonMapperService {
         stat: {
           name: this.statMap[s.stat.name] ?? s.stat.name
         }
-      })),
+      }))
     };
   }
 }

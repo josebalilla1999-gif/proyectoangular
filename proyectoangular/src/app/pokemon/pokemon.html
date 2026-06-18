@@ -1,4 +1,12 @@
 <h2 class="title">Pokémon</h2>
+<select (change)="sortPokemon($any($event.target).value)">
+  <option value="name">Nombre</option>
+  <option value="height">Altura</option>
+  <option value="weight">Peso</option>
+</select>
+
+<button (click)="setSortDirection('asc')">▲</button>
+<button (click)="setSortDirection('desc')">▼</button>
 
 <div class="pagination">
   <button (click)="prevPage()" [disabled]="currentPage === 0">

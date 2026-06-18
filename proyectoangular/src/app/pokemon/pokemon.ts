@@ -14,15 +14,28 @@ import { RouterModule } from '@angular/router';
 })
 export class PokemonComponent implements OnInit {
 
+  allPokemon: Pokemon[] = [];
   pokemonList: Pokemon[] = [];
   currentPage = 0;
   pageSize = 50;
   private page$ = new BehaviorSubject<number>(0);
+  sortDirection: 'asc' | 'desc' = 'asc';
+  sortCriteria: string = 'name';
 
   constructor(private pokemonService: PokemonService, private mapper: PokemonMapperService, private cdr: ChangeDetectorRef) { }
 
-
   ngOnInit(): void {
+
+    this.pokemonService.getPokemonList(2000, 0)
+      .pipe(
+        switchMap(res => forkJoin<Pokemon[]>(
+          res.results.map((p: { name: string; }) => this.pokemonService.getPokemon(p.name))
+        ))
+      )
+      .subscribe(data => {
+        this.allPokemon = data.map(p => this.mapper.mapPokemon(p));
+        this.applyPaginationAndSort();
+      });
 
     this.page$
       .pipe(
@@ -61,8 +74,53 @@ export class PokemonComponent implements OnInit {
         );
         this.cdr.detectChanges();
       });
-      
+
   }
+
+  sortPokemon(criteria: string): void {
+    this.sortCriteria = criteria;
+
+    const direction = this.sortDirection === 'asc' ? 1 : -1;
+
+    const sorted = [...this.allPokemon].sort((a: any, b: any) => {
+      
+    let result = 0;
+      switch (criteria) {
+        case 'name':
+          result = a.name.localeCompare(b.name);
+          break;
+
+        case 'height':
+          result = a.height - b.height;
+          break;
+
+        case 'weight':
+          result = a.weight - b.weight;
+          break;
+
+        default:
+          result = 0;
+      }
+      return result * direction;
+    });
+
+    this.allPokemon = sorted;
+
+    this.applyPaginationAndSort();
+  }
+
+  setSortDirection(direction: 'asc' | 'desc'): void {
+  this.sortDirection = direction;
+  this.sortPokemon(this.sortCriteria);
+}
+  applyPaginationAndSort(): void {
+
+    const start = this.currentPage * this.pageSize;
+    const end = start + this.pageSize;
+
+    this.pokemonList = this.allPokemon.slice(start, end);
+  }
+
   formatHeight(height: number): string {
     return `${height / 10} m`;
   }
@@ -72,16 +130,16 @@ export class PokemonComponent implements OnInit {
   }
 
   nextPage(): void {
-    if(this.page$.value < 26){
+    if (this.currentPage < 26) {
       this.currentPage++;
-      this.page$.next(this.page$.value + 1);
+      this.applyPaginationAndSort();
     }
   }
 
   prevPage(): void {
-    if (this.page$.value > 0) {
+    if (this.currentPage > 0) {
       this.currentPage--;
-      this.page$.next(this.page$.value - 1);
+      this.applyPaginationAndSort();
     }
   }
 }
