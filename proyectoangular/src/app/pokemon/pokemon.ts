@@ -71,8 +71,10 @@ export class PokemonComponent implements OnInit {
   }
 
   nextPage(): void {
-    this.currentPage++;
-    this.page$.next(this.page$.value + 1);
+    if(this.page$.value < 26){
+      this.currentPage++;
+      this.page$.next(this.page$.value + 1);
+    }
   }
 
   prevPage(): void {

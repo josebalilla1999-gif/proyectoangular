@@ -7,7 +7,7 @@
 
   <span>Página {{ currentPage + 1 }}</span>
 
-  <button (click)="nextPage()">
+  <button (click)="nextPage()" [disabled]="currentPage === 26">
     Siguiente ▶
   </button>
 </div>
