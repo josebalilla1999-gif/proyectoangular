@@ -32,11 +32,13 @@
       @for (pokemon of pokemonList; track pokemon.name) {
       <tr>
         <td>
+          <a [routerLink]="['/pokemon', pokemon.name]">
           @if (pokemon.sprite) {
           <img [src]="pokemon.sprite" [alt]="pokemon.name" class="sprite" />
           } @else {
           -
           }
+        </a>
         </td>
         <td class="name">{{ pokemon.name }}</td>
 

@@ -1,0 +1,19 @@
+.pokemon-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+}
+
+.pokemon-image {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  text-transform: capitalize;
+}

@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { PokemonMapperService } from '../services/traduccion';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './pokemon.html',
   styleUrl: './pokemon.css'
 })
