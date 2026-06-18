@@ -17,6 +17,7 @@
       <option value="id">ID</option>
       <option value="height">Altura</option>
       <option value="weight">Peso</option>
+      <option value="base_experience">Exp. base</option>
     </select>
 
     <div class="sort-buttons">
@@ -57,6 +58,7 @@
         <th>Habilidad 3</th>
         <th>Altura</th>
         <th>Peso</th>
+        <th>Exp. Base</th>
       </tr>
     </thead>
 
@@ -91,6 +93,7 @@
         <td>{{ pokemon.abilities?.[2]?.ability?.name || '-' }}</td>
         <td>{{ formatHeight(pokemon.height) }}</td>
         <td>{{ formatWeight(pokemon.weight) }}</td>
+        <td>{{ pokemon.base_experience }}</td>
       </tr>
       } @empty {
       <tr>

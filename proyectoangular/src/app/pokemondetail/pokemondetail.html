@@ -1,38 +1,54 @@
-@if (pokemon$ | async; as pokemon) {
+@if (pokemon$ | async; as data) {
 
   <div class="pokemon-card">
 
-    <h1>{{ pokemon.name | titlecase }}</h1>
+    <h1>{{ data.pokemon.name | titlecase }}</h1>
 
     <img
-      [src]="pokemon.sprite"
-      [alt]="pokemon.name"
+      [src]="data.pokemon.sprite"
+      [alt]="data.pokemon.name"
       class="pokemon-image"
     />
 
     <h2>Tipos</h2>
 
     <ul>
-      @for (type of pokemon.types; track type.slot) {
+      @for (type of data.pokemon.types; track type.slot) {
         <li>{{ type.type.name }}</li>
       }
     </ul>
 
+    <h2>Fortalezas</h2>
+
+<div class="chips">
+  @for (type of strengths; track type) {
+    <span class="chip strength">{{ type }}</span>
+  }
+</div>
+
+<h2>Debilidades</h2>
+
+<div class="chips">
+  @for (type of weaknesses; track type) {
+    <span class="chip weakness">{{ type }}</span>
+  }
+</div>
+
     <h2>Habilidades</h2>
 
     <ul>
-      @for (ability of pokemon.abilities; track ability.ability.name) {
+      @for (ability of data.pokemon.abilities; track ability.ability.name) {
         <li>{{ ability.ability.name }}</li>
       }
     </ul>
 
-    <p><strong>Altura:</strong> {{ pokemon.height / 10 }} m</p>
-    <p><strong>Peso:</strong> {{ pokemon.weight / 10 }} kg</p>
+    <p><strong>Altura:</strong> {{ data.pokemon.height / 10 }} m</p>
+    <p><strong>Peso:</strong> {{ data.pokemon.weight / 10 }} kg</p>
 
     <h2>Estadisticas</h2>
 
     <ul>
-      @for (stat of pokemon.stats; track stat.stat.name) {
+      @for (stat of data.pokemon.stats; track stat.stat.name) {
         <li>{{ stat.stat.name }}: {{ stat.base_stat}}</li>
       }
     </ul>

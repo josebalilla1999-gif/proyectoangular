@@ -166,3 +166,24 @@ input:focus,
 select:focus {
   outline: 2px solid #60a5fa;
 }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: white;
+}
+
+.strength {
+  background: #22c55e;
+}
+
+.weakness {
+  background: #ef4444;
+}

@@ -128,6 +128,10 @@ export class PokemonComponent implements OnInit {
           result = a.weight - b.weight;
           break;
 
+        case 'base_experience':
+          result = a.base_experience - b.base_experience;
+          break;
+
         default:
           result = 0;
       }

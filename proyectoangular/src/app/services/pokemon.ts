@@ -31,4 +31,5 @@ export interface Pokemon {
   height: number;
   weight: number;
   stats: any[];
+  base_experience: number;
 }
