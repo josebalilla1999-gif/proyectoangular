@@ -337,6 +337,15 @@ export class PokemonMapperService {
     'spicy-spray': 'Salpicante',
   };
 
+  private statMap: Record<string, string> = {
+    hp: 'PS',
+    attack: 'Ataque',
+    defense: 'Defensa',
+    'special-attack': 'Ataque Especial',
+    'special-defense': 'Defensa Especial',
+    speed: 'Velocidad'
+  }
+
   mapPokemon(p: any): Pokemon {
     return {
       ...p,
@@ -360,7 +369,14 @@ export class PokemonMapperService {
       })),
 
       height: p.height,
-      weight: p.weight
+      weight: p.weight,
+
+      stats: p.stats.map((s: any) => ({
+        ...s,
+        stat: {
+          name: this.statMap[s.stat.name] ?? s.stat.name
+        }
+      })),
     };
   }
 }
