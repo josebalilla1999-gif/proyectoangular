@@ -1,12 +1,36 @@
 <h2 class="title">Pokémon</h2>
-<select (change)="sortPokemon($any($event.target).value)">
-  <option value="name">Nombre</option>
-  <option value="height">Altura</option>
-  <option value="weight">Peso</option>
-</select>
+<div class="controls">
 
-<button (click)="setSortDirection('asc')">▲</button>
-<button (click)="setSortDirection('desc')">▼</button>
+  <!-- 🔍 BUSCADOR -->
+  <div class="control-group search">
+    <input
+      type="text"
+      placeholder="Buscar Pokémon..."
+      (input)="onSearchChange($any($event.target).value)"
+    />
+  </div>
+
+  <!-- 📊 ORDEN -->
+  <div class="control-group">
+    <select (change)="sortPokemon($any($event.target).value)">
+      <option value="name">Nombre</option>
+      <option value="id">ID</option>
+      <option value="height">Altura</option>
+      <option value="weight">Peso</option>
+    </select>
+
+    <div class="sort-buttons">
+      <button (click)="setSortDirection('asc')" title="Ascendente">
+        ▲
+      </button>
+
+      <button (click)="setSortDirection('desc')" title="Descendente">
+        ▼
+      </button>
+    </div>
+  </div>
+
+</div>
 
 <div class="pagination">
   <button (click)="prevPage()" [disabled]="currentPage === 0">

@@ -16,6 +16,8 @@ export class PokemonComponent implements OnInit {
 
   allPokemon: Pokemon[] = [];
   pokemonList: Pokemon[] = [];
+  searchText: string = '';
+  filteredPokemon: Pokemon[] = [];
   currentPage = 0;
   pageSize = 50;
   private page$ = new BehaviorSubject<number>(0);
@@ -35,6 +37,7 @@ export class PokemonComponent implements OnInit {
       .subscribe(data => {
         this.allPokemon = data.map(p => this.mapper.mapPokemon(p));
         this.applyPaginationAndSort();
+        this.applyFiltersAndPagination();
       });
 
     this.page$
@@ -77,17 +80,44 @@ export class PokemonComponent implements OnInit {
 
   }
 
+  applyFiltersAndPagination(): void {
+
+    let data = this.allPokemon;
+
+    // 🔍 FILTRO POR NOMBRE
+    if (this.searchText.trim()) {
+      data = data.filter(p =>
+        p.name.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    }
+
+    const start = this.currentPage * this.pageSize;
+    const end = start + this.pageSize;
+
+    this.pokemonList = data.slice(start, end);
+  }
+
+  onSearchChange(value: string): void {
+    this.searchText = value;
+    this.currentPage = 0;
+    this.applyFiltersAndPagination();
+  }
+
   sortPokemon(criteria: string): void {
     this.sortCriteria = criteria;
 
     const direction = this.sortDirection === 'asc' ? 1 : -1;
 
     const sorted = [...this.allPokemon].sort((a: any, b: any) => {
-      
-    let result = 0;
+
+      let result = 0;
       switch (criteria) {
         case 'name':
           result = a.name.localeCompare(b.name);
+          break;
+
+        case 'id':
+          result = a.id - b.id;
           break;
 
         case 'height':
@@ -110,9 +140,9 @@ export class PokemonComponent implements OnInit {
   }
 
   setSortDirection(direction: 'asc' | 'desc'): void {
-  this.sortDirection = direction;
-  this.sortPokemon(this.sortCriteria);
-}
+    this.sortDirection = direction;
+    this.sortPokemon(this.sortCriteria);
+  }
   applyPaginationAndSort(): void {
 
     const start = this.currentPage * this.pageSize;
