@@ -1,83 +1,79 @@
 @if (pokemon$ | async; as data) {
 
-  <div class="pokemon-card">
+<div class="pokemon-card">
 
-    <h1>{{ data.pokemon.name| titlecase }}</h1>
+  <h1>{{ data.pokemon.name| titlecase }}</h1>
 
-    <img
-      [src]="data.pokemon.sprite"
-      [alt]="data.pokemon.name"
-      class="pokemon-image"
-    />
+  <img [src]="data.pokemon.sprite" [alt]="data.pokemon.name" class="pokemon-image" />
 
-    <h2>Tipos</h2>
+  <h2>Tipos</h2>
 
-    <ul>
-      @for (type of data.pokemon.types; track type.slot) {
-        <li>{{ type.type.name }}</li>
-      }
-    </ul>
-
-     <!-- Fortalezas -->
-    <h2>Fortalezas</h2>
-    @if (data.strengths.length > 0) {
-      <ul>
-        @for (t of data.strengths; track t) {
-          <li class="strength">{{ t }}</li>
-        }
-      </ul>
-    } @else {
-      <p>Sin fortalezas destacadas</p>
+  <ul>
+    @for (type of data.pokemon.types; track type.slot) {
+    <li>{{ translateType(type.type.name) }}</li>
     }
+  </ul>
 
-    <!-- Debilidades -->
-    <h2>Debilidades</h2>
-    @if (data.weaknesses.length > 0) {
-      <ul>
-        @for (t of data.weaknesses; track t) {
-          <li class="weakness">{{ t }}</li>
-        }
-      </ul>
-    } @else {
-      <p>Sin debilidades destacadas</p>
+  <!-- Fortalezas -->
+  <h2>Fortalezas</h2>
+  @if (data.strengths.length > 0) {
+  <ul>
+    @for (t of data.strengths; track t) {
+    <li class="strength">{{ t }}</li>
     }
+  </ul>
+  } @else {
+  <p>Sin fortalezas destacadas</p>
+  }
 
-    <!-- Inmunidades -->
-    <h2>Inmunidades</h2>
-    @if (data.immunities.length > 0) {
-      <ul>
-        @for (t of data.immunities; track t) {
-          <li class="immunities">{{ t }}</li>
-        }
-      </ul>
-    } @else {
-      <p>Sin inmunidades destacadas</p>
+  <!-- Debilidades -->
+  <h2>Debilidades</h2>
+  @if (data.weaknesses.length > 0) {
+  <ul>
+    @for (t of data.weaknesses; track t) {
+    <li class="weakness">{{ t }}</li>
     }
+  </ul>
+  } @else {
+  <p>Sin debilidades destacadas</p>
+  }
 
-    <h2>Habilidades</h2>
+  <!-- Inmunidades -->
+  <h2>Inmunidades</h2>
+  @if (data.immunities.length > 0) {
+  <ul>
+    @for (t of data.immunities; track t) {
+    <li class="immunities">{{ t }}</li>
+    }
+  </ul>
+  } @else {
+  <p>Sin inmunidades destacadas</p>
+  }
 
-    @for (a of data.abilities; track a.name) {
+  <h2>Habilidades</h2>
+
+  @for (a of data.abilities; track a.name) {
   <div>
     <strong>{{ a.name }}</strong>
     <p>{{ a.description }}</p>
   </div>
-}
+  }
 
-    <p><strong>Altura:</strong> {{ data.pokemon.height / 10 }} m</p>
-    <p><strong>Peso:</strong> {{ data.pokemon.weight / 10 }} kg</p>
+  <p><strong>Altura:</strong> {{ data.pokemon.height / 10 }} m</p>
+  <p><strong>Peso:</strong> {{ data.pokemon.weight / 10 }} kg</p>
 
-    <h2>Estadisticas</h2>
+  <h2>Estadisticas</h2>
 
-    <ul>
-      @for (stat of data.pokemon.stats; track stat.stat.name) {
-        <li>{{ stat.stat.name }}: {{ stat.base_stat}}</li>
-      }
-    </ul>
+  <ul>
+    @for (stat of data.pokemon.stats; track stat.stat.name) {
+    <li>{{ translateStat(stat.stat.name) }}: {{ stat.base_stat}}</li>
+    }
+  </ul>
 
-  </div>
+</div>
 
 } @else {
 
-  <p>Cargando Pokémon...</p>
+<p>Cargando Pokémon...</p>
 
 }

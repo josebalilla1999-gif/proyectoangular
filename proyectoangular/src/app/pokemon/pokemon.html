@@ -3,11 +3,7 @@
 
   <!-- 🔍 BUSCADOR -->
   <div class="control-group search">
-    <input
-      type="text"
-      placeholder="Buscar Pokémon..."
-      (input)="onSearchChange($any($event.target).value)"
-    />
+    <input type="text" placeholder="Buscar Pokémon..." (input)="onSearchChange($any($event.target).value)" />
   </div>
 
   <!-- 📊 ORDEN -->
@@ -17,6 +13,12 @@
       <option value="id">ID</option>
       <option value="height">Altura</option>
       <option value="weight">Peso</option>
+      <option value="hp">PS</option>
+      <option value="attack">Ataque</option>
+      <option value="defense">Defensa</option>
+      <option value="special-attack">Ataque Especial</option>
+      <option value="special-defense">Defensa Especial</option>
+      <option value="speed">Velocidad</option>
       <option value="base_experience">Exp. base</option>
     </select>
 
@@ -29,6 +31,103 @@
         ▼
       </button>
     </div>
+  </div>
+
+  <div class="type-filters">
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('normal', $event)">
+      <span class="type-name normal">Normal</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('fire', $event)">
+      <span class="type-name fire">Fuego</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('water', $event)">
+      <span class="type-name water">Agua</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('electric', $event)">
+      <span class="type-name electric">Eléctrico</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('grass', $event)">
+      <span class="type-name grass">Planta</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('ice', $event)">
+      <span class="type-name ice">Hielo</span>
+    </label>
+
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('fighting', $event)">
+      <span class="type-name fighting">Lucha</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('poison', $event)">
+      <span class="type-name poison">Veneno</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('ground', $event)">
+      <span class="type-name ground">Tierra</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('flying', $event)">
+      <span class="type-name flying">Volador</span>
+    </label>
+
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('psychic', $event)">
+      <span class="type-name psychic">Psíquico</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('bug', $event)">
+      <span class="type-name bug">Bicho</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('rock', $event)">
+      <span class="type-name rock">Roca</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('ghost', $event)">
+      <span class="type-name ghost">Fantasma</span>
+    </label>
+
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('dragon', $event)">
+      <span class="type-name dragon">Dragón</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('dark', $event)">
+      <span class="type-name dark">Siniestro</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('steel', $event)">
+      <span class="type-name steel">Acero</span>
+    </label>
+
+    <label class="type-checkbox">
+      <input type="checkbox" (change)="toggleType('fairy', $event)">
+      <span class="type-name fairy">Hada</span>
+    </label>
+
   </div>
 
 </div>
@@ -66,30 +165,30 @@
       <tr>
         <td>
           <a [routerLink]="['/pokemon', pokemon.name]">
-          @if (pokemon.sprite) {
-          <img [src]="pokemon.sprite" [alt]="pokemon.name" class="sprite" />
-          } @else {
-          -
-          }
-        </a>
+            @if (pokemon.sprite) {
+            <img [src]="pokemon.sprite" [alt]="pokemon.name" class="sprite" />
+            } @else {
+            -
+            }
+          </a>
         </td>
         <td class="name">{{ pokemon.name }}</td>
 
         <td>
           <span class="badge type">
-            {{ pokemon.types?.[0]?.type?.name }}
+            {{ translateType(pokemon.types?.[0]?.type?.name) }}
           </span>
         </td>
 
         <td>
           <span class="badge type secondary">
-            {{ pokemon.types?.[1]?.type?.name || '-' }}
+            {{ translateType(pokemon.types?.[1]?.type?.name) || '-' }}
           </span>
         </td>
 
-        <td>{{ pokemon.abilities?.[0]?.ability?.name }}</td>
-        <td>{{ pokemon.abilities?.[1]?.ability?.name || '-' }}</td>
-        <td>{{ pokemon.abilities?.[2]?.ability?.name || '-' }}</td>
+        <td>{{ translateAbility(pokemon.abilities?.[0]?.ability?.name) }}</td>
+        <td>{{ translateAbility(pokemon.abilities?.[1]?.ability?.name) || '-' }}</td>
+        <td>{{ translateAbility(pokemon.abilities?.[2]?.ability?.name) || '-' }}</td>
         <td>{{ formatHeight(pokemon.height) }}</td>
         <td>{{ formatWeight(pokemon.weight) }}</td>
       </tr>

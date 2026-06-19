@@ -36,7 +36,6 @@ export class PokemonComponent implements OnInit {
       )
       .subscribe(data => {
         this.allPokemon = data.map(p => this.mapper.mapPokemon(p));
-        this.applyPaginationAndSort();
         this.applyFiltersAndPagination();
       });
 
@@ -80,6 +79,20 @@ export class PokemonComponent implements OnInit {
 
   }
 
+  selectedTypes: Set<string> = new Set<string>();
+  filteredList: Pokemon[] = [];
+
+  toggleType(type: string, event: any): void {
+
+    if (event.target.checked) {
+      this.selectedTypes.add(type);
+    } else {
+      this.selectedTypes.delete(type);
+    }
+
+    this.applyFiltersAndPagination();
+  }
+
   applyFiltersAndPagination(): void {
 
     let data = this.allPokemon;
@@ -88,6 +101,15 @@ export class PokemonComponent implements OnInit {
     if (this.searchText.trim()) {
       data = data.filter(p =>
         p.name.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    }
+
+    // 🧪 FILTRO POR TIPOS
+    if (this.selectedTypes.size > 0) {
+      data = data.filter(p =>
+        p.types.some((t: any) =>
+          this.selectedTypes.has(t.type.name)
+        )
       );
     }
 
@@ -102,6 +124,14 @@ export class PokemonComponent implements OnInit {
     this.currentPage = 0;
     this.applyFiltersAndPagination();
   }
+
+  getStatValue(pokemon: Pokemon, statName: string): number {
+
+  return pokemon.stats?.find(
+    (s: any) => s.stat.name === statName
+  )?.base_stat ?? 0;
+
+}
 
   sortPokemon(criteria: string): void {
     this.sortCriteria = criteria;
@@ -132,6 +162,42 @@ export class PokemonComponent implements OnInit {
           result = a.base_experience - b.base_experience;
           break;
 
+        case 'hp':
+          result =
+          this.getStatValue(a, 'hp') -
+          this.getStatValue(b, 'hp');
+        break;
+
+        case 'attack':
+          result =
+          this.getStatValue(a, 'attack') -
+          this.getStatValue(b, 'attack');
+        break;
+
+        case 'defense':
+          result =
+          this.getStatValue(a, 'defense') -
+          this.getStatValue(b, 'defense');
+        break;
+
+        case 'special_attack':
+          result =
+          this.getStatValue(a, 'special-attack') -
+          this.getStatValue(b, 'special-attack');
+        break;
+
+        case 'special_defense':
+          result =
+          this.getStatValue(a, 'special-defense') -
+          this.getStatValue(b, 'special-defense');
+        break;
+
+        case 'speed':
+          result =
+          this.getStatValue(a, 'speed') -
+          this.getStatValue(b, 'speed');
+        break;
+
         default:
           result = 0;
       }
@@ -140,19 +206,12 @@ export class PokemonComponent implements OnInit {
 
     this.allPokemon = sorted;
 
-    this.applyPaginationAndSort();
+    this.applyFiltersAndPagination();
   }
 
   setSortDirection(direction: 'asc' | 'desc'): void {
     this.sortDirection = direction;
     this.sortPokemon(this.sortCriteria);
-  }
-  applyPaginationAndSort(): void {
-
-    const start = this.currentPage * this.pageSize;
-    const end = start + this.pageSize;
-
-    this.pokemonList = this.allPokemon.slice(start, end);
   }
 
   formatHeight(height: number): string {
@@ -166,14 +225,20 @@ export class PokemonComponent implements OnInit {
   nextPage(): void {
     if (this.currentPage < 26) {
       this.currentPage++;
-      this.applyPaginationAndSort();
+      this.applyFiltersAndPagination();
     }
   }
 
   prevPage(): void {
     if (this.currentPage > 0) {
       this.currentPage--;
-      this.applyPaginationAndSort();
+      this.applyFiltersAndPagination();
     }
+  }
+  translateType(type: string): string {
+    return this.mapper.typeMap[type] ?? '-';
+  }
+  translateAbility(name: string): string {
+    return this.mapper.abilityMap[name] ?? name;
   }
 }

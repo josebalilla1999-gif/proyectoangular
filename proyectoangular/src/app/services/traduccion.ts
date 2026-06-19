@@ -6,7 +6,7 @@ import { AbilityVM } from '../pokemondetail/pokemondetail';
 @Injectable({ providedIn: 'root' })
 export class PokemonMapperService {
 
-  private typeMap: Record<string, string> = {
+  public typeMap: Record<string, string> = {
     fire: 'Fuego',
     water: 'Agua',
     grass: 'Planta',
@@ -27,7 +27,7 @@ export class PokemonMapperService {
     ice: 'Hielo'
   };
 
-  private abilityMap: Record<string, string> = {
+  public abilityMap: Record<string, string> = {
     overgrow: 'Espesura',
     blaze: 'Mar de Llamas',
     torrent: 'Torrente',
@@ -339,7 +339,7 @@ export class PokemonMapperService {
     'spicy-spray': 'Salpicante',
   };
 
-  private statMap: Record<string, string> = {
+  public statMap: Record<string, string> = {
     hp: 'PS',
     attack: 'Ataque',
     defense: 'Defensa',
@@ -347,7 +347,7 @@ export class PokemonMapperService {
     'special-defense': 'Defensa Especial',
     speed: 'Velocidad'
   }
-  private descriptionMap: Record<string, string> = {
+  public descriptionMap: Record<string, string> = {
     "The power of the Pokémon's ruinous beads lowers the Sp. Def stats of all Pokémon except itself.": "Reduce la Defensa Especial de todos los Pokemon en combate excepto el poseedor",
     "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move": "Los ataques del poseedor pueden envenenar gravemente al objetivo",
     "The power of the Pokémon's ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself.": "Reduce el Ataque Especial de todos los Pokemon en combate excepto el poseedor",
@@ -398,33 +398,34 @@ export class PokemonMapperService {
 
       sprite:
         p.sprites?.other?.showdown?.front_default ??
-        p.sprites?.other?.home?.front_default
-        ?? p.sprites?.front_default
-        ?? '',
+        p.sprites?.other?.home?.front_default ??
+        p.sprites?.front_default ??
+        '',
 
-      // tipos traducidos
+      // Tipos SIN traducir
       types: p.types.map((t: any) => ({
         ...t,
         type: {
-          name: this.typeMap[t.type.name] ?? t.type.name
+          name: t.type.name
         }
       })),
 
-      // habilidades traducidas
+      // Habilidades SIN traducir
       abilities: p.abilities.map((a: any) => ({
         ...a,
         ability: {
-          name: this.abilityMap[a.ability.name] ?? a.ability.name
+          name: a.ability.name
         }
       })),
 
       height: p.height,
       weight: p.weight,
 
+      // Stats SIN traducir
       stats: p.stats.map((s: any) => ({
         ...s,
         stat: {
-          name: this.statMap[s.stat.name] ?? s.stat.name
+          name: s.stat.name
         }
       }))
     };

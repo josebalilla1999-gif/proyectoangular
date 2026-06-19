@@ -187,3 +187,134 @@ select:focus {
 .weakness {
   background: #ef4444;
 }
+
+.type-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 15px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+
+.type-checkbox {
+  cursor: pointer;
+  position: relative;
+}
+
+
+/* ocultamos checkbox original */
+.type-checkbox input {
+  display: none;
+}
+
+
+.type-name {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white;
+  transition: all 0.25s ease;
+  opacity: 0.75;
+  transform: scale(1);
+}
+
+
+/* efecto hover */
+.type-checkbox:hover .type-name {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+
+/* seleccionado */
+.type-checkbox input:checked + .type-name {
+  opacity: 1;
+  transform: scale(1.12);
+  box-shadow: 0 0 12px rgba(0,0,0,.3);
+}
+
+
+
+/* colores tipos */
+
+.fire {
+  background: #F08030;
+}
+
+.water {
+  background: #6890F0;
+}
+
+.grass {
+  background: #78C850;
+}
+
+.electric {
+  background: #F8D030;
+  color: #333;
+}
+
+.ice {
+  background: #98D8D8;
+  color: #333;
+}
+
+.fighting {
+  background: #C03028;
+}
+
+.poison {
+  background: #A040A0;
+}
+
+.ground {
+  background: #E0C068;
+  color: #333;
+}
+
+.flying {
+  background: #A890F0;
+}
+
+.psychic {
+  background: #F85888;
+}
+
+.bug {
+  background: #A8B820;
+}
+
+.rock {
+  background: #B8A038;
+}
+
+.ghost {
+  background: #705898;
+}
+
+.dragon {
+  background: #7038F8;
+}
+
+.dark {
+  background: #705848;
+}
+
+.steel {
+  background: #B8B8D0;
+  color: #333;
+}
+
+.fairy {
+  background: #EE99AC;
+  color: #333;
+}
+
+.normal {
+  background: #A8A878;
+}

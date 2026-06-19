@@ -51,86 +51,92 @@ export class PokemonDetailComponent implements OnInit {
 
     this.pokemon$ = this.route.paramMap.pipe(
 
-  switchMap(params => {
-    const name = params.get('name')!;
-    return this.pokemonService.getPokemon(name);
-  }),
+      switchMap(params => {
+        const name = params.get('name')!;
+        return this.pokemonService.getPokemon(name);
+      }),
 
-  switchMap(pokemon => {
+      switchMap(pokemon => {
 
-    const types = pokemon.types.map((t: any) => t.type.name);
+        const types = pokemon.types.map((t: any) => t.type.name);
 
-    const abilityRequests = pokemon.abilities.map((a: any) =>
-      this.abilityService.getAbility(a.ability.name)
-    );
-
-    return forkJoin({
-      types: types.length
-        ? forkJoin(types.map(type => this.typeService.getType(type)))
-        : of([]),
-
-      abilityDesc: abilityRequests.length
-        ? forkJoin(abilityRequests)
-        : of([])
-    }).pipe(
-
-      map(({ types, abilityDesc }) => {
-
-        const weaknessSet = new Set<string>();
-        const strengthSet = new Set<string>();
-        const immunitiesSet = new Set<string>();
-
-        types.forEach(data => {
-
-          data.damage_relations.double_damage_from.forEach((t: any) =>
-            weaknessSet.add(t.name)
-          );
-
-          data.damage_relations.half_damage_from.forEach((t: any) =>
-            strengthSet.add(t.name)
-          );
-
-          data.damage_relations.no_damage_from.forEach((t: any) =>
-            immunitiesSet.add(t.name)
-          );
-        });
-
-        // eliminar duplicados cruzados
-        const intersection = new Set(
-          [...strengthSet].filter(t =>
-            weaknessSet.has(t) || immunitiesSet.has(t)
-          )
+        const abilityRequests = pokemon.abilities.map((a: any) =>
+          this.abilityService.getAbility(a.ability.name)
         );
 
-        intersection.forEach(t => {
-          strengthSet.delete(t);
-          weaknessSet.delete(t);
-        });
+        return forkJoin({
+          types: types.length
+            ? forkJoin(types.map(type => this.typeService.getType(type)))
+            : of([]),
 
-        const abilities: AbilityVM[] = abilityDesc.map((ability: any) => {
+          abilityDesc: abilityRequests.length
+            ? forkJoin(abilityRequests)
+            : of([])
+        }).pipe(
 
-          const entry =
-            ability.flavor_text_entries.find((t: any) => t.language.name === 'es') ??
-            ability.flavor_text_entries.find((t: any) => t.language.name === 'en');
+          map(({ types, abilityDesc }) => {
 
-          return {
-            name: ability.name,
-            description: entry?.flavor_text ?? 'Sin descripción'
-          };
-        });
+            const weaknessSet = new Set<string>();
+            const strengthSet = new Set<string>();
+            const immunitiesSet = new Set<string>();
 
-        return {
-          pokemon,
-          strengths: Array.from(strengthSet),
-          weaknesses: Array.from(weaknessSet),
-          immunities: Array.from(immunitiesSet),
-          abilities
-        } as PokemonDetailPageVM;
-      })
+            types.forEach(data => {
+
+              data.damage_relations.double_damage_from.forEach((t: any) =>
+                weaknessSet.add(t.name)
+              );
+
+              data.damage_relations.half_damage_from.forEach((t: any) =>
+                strengthSet.add(t.name)
+              );
+
+              data.damage_relations.no_damage_from.forEach((t: any) =>
+                immunitiesSet.add(t.name)
+              );
+            });
+
+            // eliminar duplicados cruzados
+            const intersection = new Set(
+              [...strengthSet].filter(t =>
+                weaknessSet.has(t) || immunitiesSet.has(t)
+              )
+            );
+
+            intersection.forEach(t => {
+              strengthSet.delete(t);
+              weaknessSet.delete(t);
+            });
+
+            const abilities: AbilityVM[] = abilityDesc.map((ability: any) => {
+
+              const entry =
+                ability.flavor_text_entries.find((t: any) => t.language.name === 'es') ??
+                ability.flavor_text_entries.find((t: any) => t.language.name === 'en');
+
+              return {
+                name: ability.name,
+                description: entry?.flavor_text ?? 'Sin descripción'
+              };
+            });
+
+            return {
+              pokemon,
+              strengths: Array.from(strengthSet),
+              weaknesses: Array.from(weaknessSet),
+              immunities: Array.from(immunitiesSet),
+              abilities
+            } as PokemonDetailPageVM;
+          })
+        );
+      }),
+
+      map(vm => this.mapper.mapPokemonDetail(vm))
     );
-  }),
-
-  map(vm => this.mapper.mapPokemonDetail(vm))
-);
+  }
+  translateType(type: string): string {
+    return this.mapper.typeMap[type] ?? '-';
+  }
+  translateStat(name: string): string {
+    return this.mapper.statMap[name] ?? name;
   }
 }
