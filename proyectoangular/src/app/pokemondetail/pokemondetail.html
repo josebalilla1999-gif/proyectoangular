@@ -56,11 +56,12 @@
 
     <h2>Habilidades</h2>
 
-    <ul>
-      @for (ability of data.pokemon.abilities; track ability.ability.name) {
-        <li>{{ ability.ability.name }}</li>
-      }
-    </ul>
+    @for (a of data.abilities; track a.name) {
+  <div>
+    <strong>{{ a.name }}</strong>
+    <p>{{ a.description }}</p>
+  </div>
+}
 
     <p><strong>Altura:</strong> {{ data.pokemon.height / 10 }} m</p>
     <p><strong>Peso:</strong> {{ data.pokemon.weight / 10 }} kg</p>

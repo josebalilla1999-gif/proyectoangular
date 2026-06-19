@@ -18,10 +18,20 @@ export interface PokemonDetailVM {
   pokemon: Pokemon;
   weaknesses: string[];
   strengths: string[];
+  immunities: string[];
+  abilities: {
+    name: string;
+    description: string;
+  }[];
 }
 
 export interface PokemonDetailPageVM {
   pokemon: PokemonDetailVM;
   weaknesses: string[];
   strengths: string[];
+  immunities: string[];
+  abilities: {
+    name: string;
+    description: string;
+  }[];
 }

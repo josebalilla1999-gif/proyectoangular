@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Pokemon } from './pokemon';
 import { PokemonDetailVM } from './pokemon';
+import { AbilityVM } from '../pokemondetail/pokemondetail';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonMapperService {
@@ -351,7 +352,9 @@ export class PokemonMapperService {
     return {
       ...p,
 
-      sprite: p.sprites?.other?.home?.front_default 
+      sprite: 
+      p.sprites?.other?.showdown?.front_default ??
+      p.sprites?.other?.home?.front_default 
      ?? p.sprites?.front_default 
      ?? '',
 
@@ -393,6 +396,10 @@ export class PokemonMapperService {
     strengths: (vm.strengths ?? []).map((t: string) => this.typeMap[t] ?? t),
     weaknesses: (vm.weaknesses ?? []).map((t: string) => this.typeMap[t] ?? t),
     immunities: (vm.immunities ?? []).map((t: string) => this.typeMap[t] ?? t),
+    abilities: (vm.abilities ?? []).map((a: AbilityVM) => ({
+  name: this.abilityMap[a.name] ?? a.name,
+  description: a.description
+}))
   };
   }
 

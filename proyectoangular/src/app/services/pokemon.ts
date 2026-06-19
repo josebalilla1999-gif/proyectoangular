@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AbilityVM } from '../pokemondetail/pokemondetail';
 
 @Injectable({
   providedIn: 'root'
@@ -39,4 +40,5 @@ export interface PokemonDetailVM {
   weaknesses: string[];
   strengths: string[];
   immunities: string[];
+  abilities: AbilityVM[];
 }
