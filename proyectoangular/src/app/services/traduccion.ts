@@ -347,16 +347,61 @@ export class PokemonMapperService {
     'special-defense': 'Defensa Especial',
     speed: 'Velocidad'
   }
+  private descriptionMap: Record<string, string> = {
+    "The power of the Pokémon's ruinous beads lowers the Sp. Def stats of all Pokémon except itself.": "Reduce la Defensa Especial de todos los Pokemon en combate excepto el poseedor",
+    "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move": "Los ataques del poseedor pueden envenenar gravemente al objetivo",
+    "The power of the Pokémon's ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself.": "Reduce el Ataque Especial de todos los Pokemon en combate excepto el poseedor",
+    "The Pokémon transforms into its Hero Form when it switches out.": "El Pokémon cambiará a su forma Heróica al ser relevado durante el combate",
+    "Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves.": "Libera una capa de Púas Tóxicas hacia el enemigo al ser golpeado por un movimiento físico",
+    "Boosts the Pokémon's most proficient stat on Electric Terrain or if the Pokémon is holding Booster Energy.": "Potencia su característica más alta en un Campo Eléctrico o al llevar equipado el objeto Energía Potenciadora",
+    "The mysterious tail covering the Pokémon's head makes opponents unable to use priority moves against the Pokémon or its allies.": "Impide a los enemigos usar movimientos de alta prioridad contra el poseedor y sus aliados",
+    "When the Pokémon enters a battle, it goes inside the mouth of an ally Dondozo if one is on the field. The Pokémon then issues commands from there.": "Al entrar en combate, se mete dentro de la boca de un Dondozo aliado, si lo hay, y le da órdenes desde ahí",
+    "When an attack causes its HP to drop to half or less, the Pokémon gets angry. This lowers its Defense and Sp. Def stats but boosts its Attack, Sp. Atk, and Speed stats.": "Cuando sus PS se reducen a la mitad por un ataque, reduce sus defensas y aumenta sus ataques y velocidad",
+    "Powers up slicing moves.": "Potencia los movimientos de corte",
+    "A body of pure, solid gold gives the Pokémon full immunity to other Pokémon's status moves.": "Su cuerpo dorado otorga inmunidad a los movimientos de estado",
+    "The Pokémon becomes charged when it takes damage, boosting the power of the next Electric-type move the Pokémon uses.": "Potencia su siguiente movimiento de tipo Eléctrico al recibir daño mediante un ataque",
+    "Turns the ground into Grassy Terrain when the Pokémon is hit by an attack.": "Invoca un Campo de Hierba al recibir daño mediante un ataque",
+    "The Pokémon becomes charged when it is hit by a wind move, boosting the power of the next Electric-type move the Pokémon uses.": "Potencia su siguiente movimiento de tipo Eléctrico al recibir daño mediante un movimiento basado en viento",
+    "The power of the Pokémon's ruinous sword lowers the Defense stats of all Pokémon except itself.": "Reduce la Defensa de todos los Pokémon en combate excepto el poseedor",
+    "When the Pokémon enters a battle, its Attack and Sp. Atk stats are slightly boosted for each of the allies in its party that have already been defeated.": "Potencia su Ataque y Ataque Especial según cuántos aliados han sido debilitados durante el combate",
+    "If hit by a Ground-type move, the Pokémon has its HP restored instead of taking damage.": "Recupera PS al ser golpeado por un movimiento de tipo Tierra",
+    "When the Pokémon enters a battle, it showers its ally with hospitality, restoring a small amount of the ally's HP": "Su hospitalidad hace que su aliado recupere PS cuando el poseedor entra en combate",
+    "Turns the sunlight harsh when the Pokémon enters a battle. The ancient pulse thrumming through the Pokémon also boosts its Attack stat in harsh sunlight.": "Invoca un clima soleado al entrar en combate, y potencia su Ataque en dicho clima",
+    "Even when the sunlight has not turned harsh, the Pokémon can use its moves as if the weather were harsh sunlight.": "El poseedor ejecuta sus movimientos como si estuviera en clima soleado",
+    "Turns the ground into Electric Terrain when the Pokémon enters a battle. The futuristic engine within the Pokémon also boosts its Sp. Atk stat on Electric Terrain.": "Invoca un Campo Eléctrico al entrar en combate, y potencia su Ataque Especial en dicho campo",
+    "Lowers the evasion of opposing Pokémon by 1 stage when first sent into battle": "Reduce la Evasión del oponente cuando entra en combate por primera vez",
+    "The Pokémon ignores changes to opponents' evasiveness, its accuracy can't be lowered, and it can hit Ghost types with Normal-type and Fighting-type moves": "Ignora los cambios en la Evasión del objetivo, impide que su Precisión pueda ser reducida, y puede golpear a los Pokémon de tipo Fantasma con movimientos de tipo Normal o Lucha",
+    "Contact with the Pokémon changes the attacker's Ability to Lingering Aroma.": "Establecer contacto con el poseedor provoca que la habilidad del atacante cambie a Olor Persistente",
+    "If an opponent's stat is boosted, the Pokémon seizes the opportunity to boost the same stat for itself.": "El poseedor aprovecha la oportunidad y, cuando un oponente aumenta sus características, aumenta las suyas también",
+    "Boosts the Pokémon's most proficient stat in harsh sunlight or if the Pokémon is holding Booster Energy.": "Potencia su característica más alta en clima soleado o al llevar equipado el objeto Energía Potenciadora",
+    "Boosts the Pokémon’s Attack stat if intimidated. Moves and items that would force the Pokémon to switch out also fail to work.": "Potencia su Ataque si es objetivo de Intimidación. Los movimientos y objetos que provocan cambio de Pokémon tampoco funcionan",
+    "The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.": "Convierte los movimientos de tipo Normal en tipo Dragón y aumenta su potencia",
+    "The Pokémon will always act more slowly when using status moves, but these moves will be unimpeded by the Ability of the target.": "Al usar un movimiento de estado, el poseedor realizará su movimiento en último lugar, pero ignora la habilidad del objetivo",
+    "When the Pokémon eats a Berry, it will regurgitate that Berry at the end of the next turn and eat it one more time.": "Al comer una baya, la regurgita en el siguiente turno para volvérsela a comer",
+    "The Pokémon's pure salt protects it from status conditions and halves the damage taken from Ghost-type moves.": "Su sal pura protege al poseedor de cambios de estado y reduce a la mitad el daño recibido por movimientos de tipo Fantasma",
+    "When the Pokémon takes damage from a move, it burns the attacker.": "Provoca una quemadura a su atacante al recibir daño directo",
+    "Boosts the Pokémon's Attack stat if Tailwind takes effect or if the Pokémon is hit by a wind move. The Pokémon also takes no damage from wind moves.": "Potencia su Ataque durante un Viento Afín o al ser objetivo de un movimiento basado en viento, anulando el daño recibido por dichos movimientos",
+    "The power of the Pokémon's ruinous wooden tablets lowers the Attack stats of all Pokémon except itself.": "Reduce el Ataque de todos los Pokémon en combate excepto el poseedor",
+    "When the Pokémon enters a battle, it absorbs the energy around itself and transforms into its Terastal Form.": "Cambia a su forma Teracristal al entrar en combate",
+    "The Pokémon's shell contains the powers of each type. All damage-dealing moves that hit the Pokémon when its HP is full will not be very effective.": "Si sus PS están al máximo, recibe daño poco eficaz de cualquier movimiento de daño directo",
+    "When Terapagos changes into its Stellar Form, it uses its hidden powers to eliminate all effects of weather and terrain, reducing them to zero.": "Cuando Terapagos cambia a su forma Estelar, elimina todos los efectos de clima y campos",
+    "Boosts the Attack stat when the Pokémon is hit by a Fire-type move. The Pokémon also cannot be burned.": "Potencia su Ataque al ser golpeado por un movimiento de tipo Fuego, y además no puede sufrir quemaduras",
+    "Pokémon poisoned by Pecharunt's moves will also become confused.": "Causa confusión a cualquier oponente que envenene",
+    "Powers up Rock-type moves.": "Potencia los movimientos de tipo Roca",
+    "When the Pokémon uses contact moves, it can hit even targets that are protecting themselves, dealing 1/4 of the damage that the move would otherwise deal. Everything aside from the target's protective effects is still triggered.": "Permite al poseedor golpear a objetivos que hayan usado movimientos de protección, realizando solo un 25% de daño a dichos objetivos. Los efectos causados por golpear las protecciones se seguirán activando",
+    "When the Pokémon enters a battle, it copies an ally's stat changes.": "Copia los cambios de características de los aliados al entrar en combate"
+
+  }
 
   mapPokemon(p: any): Pokemon {
     return {
       ...p,
 
-      sprite: 
-      p.sprites?.other?.showdown?.front_default ??
-      p.sprites?.other?.home?.front_default 
-     ?? p.sprites?.front_default 
-     ?? '',
+      sprite:
+        p.sprites?.other?.showdown?.front_default ??
+        p.sprites?.other?.home?.front_default
+        ?? p.sprites?.front_default
+        ?? '',
 
       // tipos traducidos
       types: p.types.map((t: any) => ({
@@ -387,20 +432,20 @@ export class PokemonMapperService {
   }
 
   mapPokemonDetail(vm: any): PokemonDetailVM {
-  if (!vm?.pokemon) {
-    console.error('VM inválido:', vm);
-    throw new Error('pokemon es undefined en mapPokemonDetail');
-  }
-  return {
-    pokemon: this.mapPokemon(vm.pokemon),
-    strengths: (vm.strengths ?? []).map((t: string) => this.typeMap[t] ?? t),
-    weaknesses: (vm.weaknesses ?? []).map((t: string) => this.typeMap[t] ?? t),
-    immunities: (vm.immunities ?? []).map((t: string) => this.typeMap[t] ?? t),
-    abilities: (vm.abilities ?? []).map((a: AbilityVM) => ({
-  name: this.abilityMap[a.name] ?? a.name,
-  description: a.description
-}))
-  };
+    if (!vm?.pokemon) {
+      console.error('VM inválido:', vm);
+      throw new Error('pokemon es undefined en mapPokemonDetail');
+    }
+    return {
+      pokemon: this.mapPokemon(vm.pokemon),
+      strengths: (vm.strengths ?? []).map((t: string) => this.typeMap[t] ?? t),
+      weaknesses: (vm.weaknesses ?? []).map((t: string) => this.typeMap[t] ?? t),
+      immunities: (vm.immunities ?? []).map((t: string) => this.typeMap[t] ?? t),
+      abilities: (vm.abilities ?? []).map((a: AbilityVM) => ({
+        name: this.abilityMap[a.name] ?? a.name,
+        description: this.descriptionMap[a.description] ?? a.description
+      }))
+    };
   }
 
 }
