@@ -390,7 +390,6 @@ export class PokemonMapperService {
     "Powers up Rock-type moves.": "Potencia los movimientos de tipo Roca",
     "When the Pokémon uses contact moves, it can hit even targets that are protecting themselves, dealing 1/4 of the damage that the move would otherwise deal. Everything aside from the target's protective effects is still triggered.": "Permite al poseedor golpear a objetivos que hayan usado movimientos de protección, realizando solo un 25% de daño a dichos objetivos. Los efectos causados por golpear las protecciones se seguirán activando",
     "When the Pokémon enters a battle, it copies an ally's stat changes.": "Copia los cambios de características de los aliados al entrar en combate"
-
   }
 
   mapPokemon(p: any): Pokemon {
