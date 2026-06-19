@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Pokemon, PokemonService } from '../services/pokemon';
+import { PokemonService } from '../services/pokemon';
 import { CommonModule } from '@angular/common';
 import { forkJoin, map, Observable, switchMap } from 'rxjs';
 import { PokemonMapperService } from '../services/traduccion';
-import { TypeService, PokemonDetailVM } from '../services/type';
+import { TypeService } from '../services/type';
+
+export interface PokemonDetailPageVM {
+  pokemon: any;
+  strengths: string[];
+  weaknesses: string[];
+  immunities: string[];
+}
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -15,6 +22,8 @@ import { TypeService, PokemonDetailVM } from '../services/type';
 })
 export class PokemonDetailComponent implements OnInit {
 
+  pokemon$!: Observable<PokemonDetailPageVM>;
+
   constructor(
     private route: ActivatedRoute,
     private pokemonService: PokemonService,
@@ -22,77 +31,77 @@ export class PokemonDetailComponent implements OnInit {
     private typeService: TypeService
   ) { }
 
-  pokemon$!: Observable<PokemonDetailVM>;
-  weaknesses: string[] = [];
-  strengths: string[] = [];
-
   ngOnInit(): void {
 
-  this.pokemon$ = this.route.paramMap.pipe(
+    this.pokemon$ = this.route.paramMap.pipe(
 
-    switchMap(params => {
-      const name = params.get('name')!;
-      return this.pokemonService.getPokemon(name);
-    }),
+      switchMap(params => {
+        const name = params.get('name')!;
+        return this.pokemonService.getPokemon(name);
+      }),
 
-    switchMap(pokemon => {
+      switchMap(pokemon => {
 
-      const types = pokemon.types.map((t: any) => t.type.name);
+        const types = pokemon.types.map((t: any) => t.type.name);
 
-      return forkJoin(
-        types.map(type => this.typeService.getType(type))
-      ).pipe(
-        map(typeData => {
-
-          const weaknessSet = new Set<string>();
-          const strengthSet = new Set<string>();
-
-          typeData.forEach(data => {
-
-            data.damage_relations.double_damage_from.forEach((t: any) =>
-              weaknessSet.add(t.name)
-            );
-
-            data.damage_relations.double_damage_to.forEach((t: any) =>
-              strengthSet.add(t.name)
-            );
-          });
-
-          return {
+        if (!types.length) {
+          return [{
             pokemon,
-            weaknesses: Array.from(weaknessSet),
-            strengths: Array.from(strengthSet)
-          };
-        })
-      );
-    }),
+            strengths: [],
+            weaknesses: []
+          }];
+        }
 
-    map(vm => ({
-      ...vm,
-      pokemon: this.mapper.mapPokemon(vm.pokemon)
-    }))
-  );
-}
-  calculateTypeRelations(types: string[]): void {
+        return forkJoin(
+          types.map(type => this.typeService.getType(type))
+        ).pipe(
+          map(typeData => {
 
-    const weaknessSet = new Set<string>();
-    const strengthSet = new Set<string>();
+            const weaknessSet = new Set<string>();
+            const strengthSet = new Set<string>();
+            const immunitiesSet = new Set<string>();
+            // tipos que están en ambos
 
-    types.forEach(type => {
+            typeData.forEach(data => {
 
-      this.typeService.getType(type).subscribe(data => {
+              data.damage_relations.double_damage_from.forEach((t: any) =>
+                weaknessSet.add(t.name)
+              );
 
-        data.damage_relations.double_damage_from.forEach((t: any) =>
-          weaknessSet.add(t.name)
+              data.damage_relations.half_damage_from.forEach((t: any) =>
+                strengthSet.add(t.name)
+              );
+              
+              data.damage_relations.no_damage_from.forEach((t: any) =>
+                immunitiesSet.add(t.name));
+            });
+
+            const intersection = new Set(
+  [...strengthSet].filter(t => weaknessSet.has(t) || immunitiesSet.has(t))
+);
+
+// eliminarlos de ambos
+intersection.forEach(t => {
+  strengthSet.delete(t);
+  weaknessSet.delete(t);
+});
+
+            const vm: PokemonDetailPageVM = {
+              pokemon,
+              strengths: Array.from(strengthSet),
+              weaknesses: Array.from(weaknessSet),
+              immunities: Array.from(immunitiesSet)
+            };
+
+            return vm;
+          })
         );
+      }),
 
-        data.damage_relations.double_damage_to.forEach((t: any) =>
-          strengthSet.add(t.name)
-        );
+      map(vm => {
 
-        this.weaknesses = Array.from(weaknessSet);
-        this.strengths = Array.from(strengthSet);
-      });
-    });
+        return this.mapper.mapPokemonDetail(vm);
+      })
+    );
   }
 }

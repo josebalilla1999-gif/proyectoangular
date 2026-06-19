@@ -19,3 +19,9 @@ export interface PokemonDetailVM {
   weaknesses: string[];
   strengths: string[];
 }
+
+export interface PokemonDetailPageVM {
+  pokemon: PokemonDetailVM;
+  weaknesses: string[];
+  strengths: string[];
+}

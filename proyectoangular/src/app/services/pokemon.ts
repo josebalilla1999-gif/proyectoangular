@@ -33,3 +33,10 @@ export interface Pokemon {
   stats: any[];
   base_experience: number;
 }
+
+export interface PokemonDetailVM {
+  pokemon: Pokemon;
+  weaknesses: string[];
+  strengths: string[];
+  immunities: string[];
+}

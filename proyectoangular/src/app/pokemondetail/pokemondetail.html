@@ -2,7 +2,7 @@
 
   <div class="pokemon-card">
 
-    <h1>{{ data.pokemon.name | titlecase }}</h1>
+    <h1>{{ data.pokemon.name| titlecase }}</h1>
 
     <img
       [src]="data.pokemon.sprite"
@@ -18,21 +18,41 @@
       }
     </ul>
 
+     <!-- Fortalezas -->
     <h2>Fortalezas</h2>
+    @if (data.strengths.length > 0) {
+      <ul>
+        @for (t of data.strengths; track t) {
+          <li class="strength">{{ t }}</li>
+        }
+      </ul>
+    } @else {
+      <p>Sin fortalezas destacadas</p>
+    }
 
-<div class="chips">
-  @for (type of strengths; track type) {
-    <span class="chip strength">{{ type }}</span>
-  }
-</div>
+    <!-- Debilidades -->
+    <h2>Debilidades</h2>
+    @if (data.weaknesses.length > 0) {
+      <ul>
+        @for (t of data.weaknesses; track t) {
+          <li class="weakness">{{ t }}</li>
+        }
+      </ul>
+    } @else {
+      <p>Sin debilidades destacadas</p>
+    }
 
-<h2>Debilidades</h2>
-
-<div class="chips">
-  @for (type of weaknesses; track type) {
-    <span class="chip weakness">{{ type }}</span>
-  }
-</div>
+    <!-- Inmunidades -->
+    <h2>Inmunidades</h2>
+    @if (data.immunities.length > 0) {
+      <ul>
+        @for (t of data.immunities; track t) {
+          <li class="immunities">{{ t }}</li>
+        }
+      </ul>
+    } @else {
+      <p>Sin inmunidades destacadas</p>
+    }
 
     <h2>Habilidades</h2>
 
