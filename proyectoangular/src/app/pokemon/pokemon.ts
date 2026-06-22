@@ -180,13 +180,13 @@ export class PokemonComponent implements OnInit {
           this.getStatValue(b, 'defense');
         break;
 
-        case 'special_attack':
+        case 'special-attack':
           result =
           this.getStatValue(a, 'special-attack') -
           this.getStatValue(b, 'special-attack');
         break;
 
-        case 'special_defense':
+        case 'special-defense':
           result =
           this.getStatValue(a, 'special-defense') -
           this.getStatValue(b, 'special-defense');

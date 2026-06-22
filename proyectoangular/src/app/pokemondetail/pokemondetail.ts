@@ -97,14 +97,34 @@ export class PokemonDetailComponent implements OnInit {
 
             // eliminar duplicados cruzados
             const intersection = new Set(
-              [...strengthSet].filter(t =>
-                weaknessSet.has(t) || immunitiesSet.has(t)
+              [...weaknessSet].filter(t =>
+                strengthSet.has(t)
               )
             );
 
             intersection.forEach(t => {
               strengthSet.delete(t);
               weaknessSet.delete(t);
+            });
+
+            const intersection2 = new Set(
+              [...weaknessSet].filter(t =>
+                immunitiesSet.has(t)
+              )
+            );
+
+            intersection2.forEach(t => {
+              weaknessSet.delete(t);
+            });
+
+            const intersection3 = new Set(
+              [...strengthSet].filter(t =>
+                immunitiesSet.has(t)
+              )
+            );
+
+            intersection3.forEach(t => {
+              strengthSet.delete(t);
             });
 
             const abilities: AbilityVM[] = abilityDesc.map((ability: any) => {
