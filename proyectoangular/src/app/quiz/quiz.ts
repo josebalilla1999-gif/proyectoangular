@@ -30,7 +30,7 @@ export class Quiz implements OnInit {
   private questionFactories: QuestionFactory[] = [
     () => this.createGuessThePokemonQuestion(),
     () => this.createGuessTheTypeQuestion(),
-    () => this.createGuessTheAbilityQuestion() // futuro
+    () => this.createGuessTheAbilityQuestion()
   ];
 
   ngOnInit(): void {
@@ -113,7 +113,15 @@ export class Quiz implements OnInit {
       }))
   }
 
+  mapTypes(p: Pokemon): string {
+    return (p.types ?? [])
+      .map(t => this.mapper.mapType(t.type.name))
+      .sort()
+      .join(' / ');
+  }
+
   createGuessTheTypeQuestion() {
+
     const ids = Array.from(
       { length: 4 },
       () => Math.floor(Math.random() * 1025) + 1
@@ -130,14 +138,29 @@ export class Quiz implements OnInit {
 
         const correct = pokemons[0];
 
-        const options = pokemons
-          .map(p => this.mapper.mapType(p.types?.[0]))
-          .filter(Boolean);
+        const rawOptions = this.shuffle(
+          Array.from(
+            new Set(
+              pokemons.map(p => this.mapTypes(p))
+            )
+          )
+        );
+
+        const answer = this.mapTypes(correct);
+
+        const uniqueOptions = Array.from(new Set(rawOptions));
+
+        if (!uniqueOptions.includes(answer)) {
+          uniqueOptions.push(answer);
+        }
+
+        const options = this.shuffle(uniqueOptions);
+
         return {
-          question: '¿Cuál es el tipo principal de este Pokémon?',
+          question: '¿Cuál es la combinación de tipos de este Pokémon?',
           image: correct.sprite,
-          options: this.shuffle(options),
-          answer: this.mapper.mapType(correct.types?.[0])
+          options,
+          answer
         };
       })
     );
