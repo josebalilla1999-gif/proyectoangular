@@ -392,6 +392,16 @@ export class PokemonMapperService {
     "When the Pokémon enters a battle, it copies an ally's stat changes.": "Copia los cambios de características de los aliados al entrar en combate"
   }
 
+  mapType(type: any): string {
+    const name = type?.type?.name ?? type;
+    return this.typeMap[name] ?? name;
+  }
+
+  mapAbility(ability: any): string {
+    const name = ability?.ability?.name ?? ability;
+    return this.abilityMap[name] ?? name;
+  }
+
   mapPokemon(p: any): Pokemon {
     return {
       ...p,
