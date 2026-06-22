@@ -88,22 +88,32 @@ export class Quiz implements OnInit {
     ).pipe(
       map((pokemons: Pokemon[]) => {
 
-        const correct = pokemons[0];
+        const getRandomAbility = (p: Pokemon) => {
+          const abilities = p.abilities ?? [];
+          if (!abilities.length) return null;
+
+          const randomIndex = Math.floor(Math.random() * abilities.length);
+          return abilities[randomIndex]?.ability?.name;
+        };
+
+        const rawOptions = pokemons
+          .map(p => getRandomAbility(p))
+          .filter(Boolean);
+
+        const options = rawOptions.map(a => this.mapper.mapAbility(a));
+
+        const correctAbility = options[0];
 
         return {
-          question: '¿Qué habilidad principal tiene este Pokémon?',
-          image: correct.sprite,
-          options: this.shuffle(
-            pokemons.map(p => this.mapper.mapAbility(p.abilities?.[0]))
-          ),
-          answer: this.mapper.mapAbility(correct.abilities?.[0])
+          question: '¿Cuál de estas habilidades tiene este Pokémon?',
+          image: pokemons[0].sprite,
+          options: this.shuffle(options),
+          answer: correctAbility
         };
-      })
-    );
+      }))
   }
 
   createGuessTheTypeQuestion() {
-
     const ids = Array.from(
       { length: 4 },
       () => Math.floor(Math.random() * 1025) + 1
