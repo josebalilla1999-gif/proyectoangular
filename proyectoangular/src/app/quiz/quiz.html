@@ -1,0 +1,57 @@
+<div class="quiz-container">
+
+  <!-- LOADING -->
+  @if(loading) {
+    <p>Generando preguntas...</p>
+  }
+
+  <!-- QUIZ -->
+  @if(!loading && !finished && question) {
+
+    <div class="quiz-card">
+
+      <h2>{{ question.question }}</h2>
+
+      <img [src]="question?.image || ''" />
+
+      <div class="options">
+        @for(option of question.options; track option) {
+          <button (click)="answer(option)" class="name">
+            {{ option }}
+          </button>
+        }
+      </div>
+
+      <p>{{ currentQuestion + 1 }} / {{ questions.length }}</p>
+
+    </div>
+
+  }
+
+  <!-- FINAL -->
+  @if(finished) {
+    <div class="result-card">
+
+      <h2>🎉 Quiz terminado</h2>
+
+      <p>
+        Has conseguido
+        <strong>{{ score }}</strong>
+        de
+        <strong>{{ questions.length }}</strong>
+      </p>
+
+      <button
+        class="restart-btn"
+        (click)="
+          resetQuiz();
+        ">
+
+        Reintentar
+
+      </button>
+
+    </div>
+  }
+
+</div>
