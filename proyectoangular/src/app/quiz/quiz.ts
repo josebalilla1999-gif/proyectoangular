@@ -40,9 +40,6 @@ export class Quiz implements OnInit {
     this.generateQuestions(10);
   }
 
-  // ==============================
-  // GENERAR TODAS LAS PREGUNTAS
-  // ==============================
   generateQuestions(count: number): void {
 
     const requests = Array.from({ length: count }).map(() =>
@@ -62,9 +59,6 @@ export class Quiz implements OnInit {
     });
   }
 
-  // ==============================
-  // UNA PREGUNTA
-  // ==============================
   createQuestion() {
 
     const ids = Array.from(
@@ -75,7 +69,7 @@ export class Quiz implements OnInit {
     return forkJoin(
       ids.map(id =>
         this.pokemonService.getPokemonById(id).pipe(
-          map(p => this.mapper.mapPokemon(p)) // 👈 AQUÍ EL MAGIC
+          map(p => this.mapper.mapPokemon(p))
         )
       )
     ).pipe(
@@ -85,7 +79,7 @@ export class Quiz implements OnInit {
 
         return {
           question: '¿Qué Pokémon es este?',
-          image: correctPokemon.sprite, // 👈 YA NO FALLA
+          image: correctPokemon.sprite,
           options: this.shuffle(pokemons.map(p => p.name)),
           answer: correctPokemon.name
         };
@@ -93,23 +87,14 @@ export class Quiz implements OnInit {
     );
   }
 
-  // ==============================
-  // SHUFFLE
-  // ==============================
   shuffle(array: string[]): string[] {
     return array.sort(() => Math.random() - 0.5);
   }
 
-  // ==============================
-  // ACTUAL PREGUNTA
-  // ==============================
   get question(): QuizQuestion | null {
     return this.questions[this.currentQuestion] ?? null;
   }
 
-  // ==============================
-  // RESPONDER
-  // ==============================
   answer(option: string): void {
 
     if (!this.question) return;
@@ -131,9 +116,6 @@ export class Quiz implements OnInit {
   }
 }
 
-// ==============================
-// MODELO
-// ==============================
 export interface QuizQuestion {
   question: string;
   image: string;

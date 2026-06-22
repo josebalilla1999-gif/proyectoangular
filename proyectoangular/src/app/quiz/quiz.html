@@ -1,11 +1,9 @@
 <div class="quiz-container">
 
-  <!-- LOADING -->
   @if(loading) {
     <p>Generando preguntas...</p>
   }
 
-  <!-- QUIZ -->
   @if(!loading && !finished && question) {
 
     <div class="quiz-card">
@@ -28,11 +26,10 @@
 
   }
 
-  <!-- FINAL -->
   @if(finished) {
     <div class="result-card">
 
-      <h2>🎉 Quiz terminado</h2>
+      <h2>Quiz terminado</h2>
 
       <p>
         Has conseguido
