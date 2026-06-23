@@ -95,20 +95,23 @@ export class Quiz implements OnInit {
           const randomIndex = Math.floor(Math.random() * abilities.length);
           return abilities[randomIndex]?.ability?.name;
         };
-
-        const rawOptions = pokemons
+        const rawAbilities = pokemons
           .map(p => getRandomAbility(p))
           .filter(Boolean);
 
-        const options = rawOptions.map(a => this.mapper.mapAbility(a));
+        const uniqueAbilities = [
+          ...new Set(rawAbilities)
+        ];
 
-        const correctAbility = options[0];
+        const answerRaw = uniqueAbilities[0];
 
         return {
           question: '¿Cuál de estas habilidades tiene este Pokémon?',
           image: pokemons[0].sprite,
-          options: this.shuffle(options),
-          answer: correctAbility
+          options: this.shuffle(
+            uniqueAbilities.map(a => this.mapper.mapAbility(a))
+          ),
+          answer: this.mapper.mapAbility(answerRaw)
         };
       }))
   }
@@ -182,11 +185,16 @@ export class Quiz implements OnInit {
       map((pokemons: Pokemon[]) => {
 
         const correctPokemon = pokemons[0];
+        const options = this.shuffle([
+          ...new Set(
+            pokemons.map(p => p.name)
+          )
+        ]);
 
         return {
           question: '¿Qué Pokémon es este?',
           image: correctPokemon.sprite,
-          options: this.shuffle(pokemons.map(p => p.name)),
+          options,
           answer: correctPokemon.name
         };
       })
