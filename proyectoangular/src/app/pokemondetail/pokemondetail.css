@@ -1,5 +1,5 @@
 .pokemon-card {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 2rem auto;
   padding: 2rem;
   border-radius: 12px;
@@ -18,3 +18,86 @@ h1 {
   text-align: center;
   text-transform: capitalize;
 }
+
+h2{
+  text-align: center;
+  margin-top: 30px;
+}
+
+h3{
+  text-align: center;
+}
+
+p{
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+li {
+  margin: 0;
+}
+
+.typebadge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: white;
+  background: #888;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.type-badge:hover {
+  transform: scale(1.05);
+}
+
+/* Colores por tipo Pokémon */
+
+.type-fire { background: #f08030; }
+.type-water { background: #6890f0; }
+.type-grass { background: #78c850; }
+.type-electric { background: #f8d030; color: #222; }
+.type-ice { background: #98d8d8; color: #222; }
+.type-fighting { background: #c03028; }
+.type-poison { background: #a040a0; }
+.type-ground { background: #e0c068; color: #222; }
+.type-flying { background: #a890f0; }
+.type-psychic { background: #f85888; }
+.type-bug { background: #a8b820; }
+.type-rock { background: #b8a038; }
+.type-ghost { background: #705898; }
+.type-dark { background: #705848; }
+.type-dragon { background: #7038f8; }
+.type-steel { background: #b8b8d0; color: #222; }
+.type-fairy { background: #ee99ac; }
+.type-normal { background: #a8a878; }
+.type-Fuego { background: #f08030; }
+.type-Agua { background: #6890f0; }
+.type-Planta { background: #78c850; }
+.type-Eléctrico { background: #f8d030; color: #222; }
+.type-Hielo { background: #98d8d8; color: #222; }
+.type-Lucha { background: #c03028; }
+.type-Veneno { background: #a040a0; }
+.type-Tierra { background: #e0c068; color: #222; }
+.type-Volador { background: #a890f0; }
+.type-Psíquico { background: #f85888; }
+.type-Bicho { background: #a8b820; }
+.type-Roca { background: #b8a038; }
+.type-Fantasma { background: #705898; }
+.type-Siniestro { background: #705848; }
+.type-Dragón { background: #7038f8; }
+.type-Acero { background: #b8b8d0; color: #222; }
+.type-Hada { background: #ee99ac; }
+.type-Normal { background: #a8a878; }

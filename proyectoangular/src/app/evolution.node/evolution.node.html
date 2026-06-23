@@ -1,0 +1,18 @@
+<div class="node">
+
+  <!-- Nodo actual -->
+  <div class="pokemon-card">
+    {{ node.name | titlecase }}
+  </div>
+
+  <!-- Hijos -->
+  <div class="children" *ngIf="node.evolvesTo?.length">
+
+    <app-evolution-node
+      *ngFor="let child of node.evolvesTo"
+      [node]="child">
+    </app-evolution-node>
+
+  </div>
+
+</div>

@@ -10,16 +10,27 @@
 
   <ul>
     @for (type of data.pokemon.types; track type.slot) {
-    <li>{{ translateType(type.type.name) }}</li>
+    <li class="typebadge" [ngClass]="'type-' + type.type.name">{{ translateType(type.type.name) }}</li>
     }
   </ul>
+
+  <h2>Descripción</h2>
+  <p>
+    {{ (pokemon$ | async)?.description }}
+  </p>
+
+  <h2>Evolución</h2>
+  <app-evolution-node
+    *ngIf="data.evolutionTree"
+    [node]="data.evolutionTree">
+  </app-evolution-node>
 
   <!-- Fortalezas -->
   <h2>Fortalezas</h2>
   @if (data.strengths.length > 0) {
   <ul>
     @for (t of data.strengths; track t) {
-    <li class="strength">{{ t }}</li>
+    <li [ngClass]="'type-' + t" class="strength typebadge">{{ t }}</li>
     }
   </ul>
   } @else {
@@ -31,7 +42,7 @@
   @if (data.weaknesses.length > 0) {
   <ul>
     @for (t of data.weaknesses; track t) {
-    <li class="weakness">{{ t }}</li>
+    <li [ngClass]="'type-' + t" class="weakness typebadge">{{ t }}</li>
     }
   </ul>
   } @else {
@@ -43,7 +54,7 @@
   @if (data.immunities.length > 0) {
   <ul>
     @for (t of data.immunities; track t) {
-    <li class="immunities">{{ t }}</li>
+    <li [ngClass]="'type-' + t" class="immunities typebadge">{{ t }}</li>
     }
   </ul>
   } @else {
@@ -54,7 +65,7 @@
 
   @for (a of data.abilities; track a.name) {
   <div>
-    <strong>{{ a.name }}</strong>
+    <h3>{{ a.name }}</h3>
     <p>{{ a.description }}</p>
   </div>
   }

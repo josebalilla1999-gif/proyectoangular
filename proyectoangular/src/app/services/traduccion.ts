@@ -454,7 +454,9 @@ export class PokemonMapperService {
       abilities: (vm.abilities ?? []).map((a: AbilityVM) => ({
         name: this.abilityMap[a.name] ?? a.name,
         description: this.descriptionMap[a.description] ?? a.description
-      }))
+      })),
+      description: vm.description,
+      evolutionTree: vm.evolutionTree
     };
   }
 

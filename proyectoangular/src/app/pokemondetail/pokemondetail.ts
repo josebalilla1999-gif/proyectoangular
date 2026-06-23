@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PokemonService } from '../services/pokemon';
+import { Pokemon, PokemonService } from '../services/pokemon';
 import { CommonModule } from '@angular/common';
 import { forkJoin, map, Observable, of, switchMap } from 'rxjs';
 import { PokemonMapperService } from '../services/traduccion';
 import { TypeService } from '../services/type';
 import { Ability } from '../services/ability';
+import { EvolutionNodeComponent } from '../evolution.node/evolution.node';
+import { HttpClient } from '@angular/common/http';
 
 export interface PokemonDetailPageVM {
   pokemon: any;
@@ -13,6 +15,8 @@ export interface PokemonDetailPageVM {
   weaknesses: string[];
   immunities: string[];
   abilities: AbilityVM[];
+  description: string;
+  evolutionTree: EvolutionNode;
 }
 
 export interface PokemonDetailVM {
@@ -21,6 +25,8 @@ export interface PokemonDetailVM {
   strengths: string[];
   immunities: string[];
   abilities: AbilityVM[];
+  description: string;
+  evolutionTree: EvolutionNode;
 }
 
 export interface AbilityVM {
@@ -28,24 +34,41 @@ export interface AbilityVM {
   description: string;
 }
 
+export interface EvolutionNode {
+  name: string;
+  evolvesTo: EvolutionNode[];
+}
+
 @Component({
   selector: 'app-pokemon-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EvolutionNodeComponent],
   templateUrl: './pokemondetail.html',
   styleUrl: './pokemondetail.css'
 })
 export class PokemonDetailComponent implements OnInit {
 
   pokemon$!: Observable<PokemonDetailPageVM>;
+  private apiUrl = 'https://pokeapi.co/api/v2';
 
   constructor(
     private route: ActivatedRoute,
     private pokemonService: PokemonService,
     private mapper: PokemonMapperService,
     private typeService: TypeService,
-    private abilityService: Ability
+    private abilityService: Ability,
+    private http: HttpClient
   ) { }
+
+  private buildEvolutionTree(chain: any): EvolutionNode {
+    const traverse = (node: any): EvolutionNode => {
+      return {
+        name: node.species.name,
+        evolvesTo: node.evolves_to.map((child: any) => traverse(child))
+      };
+    };
+    return traverse(chain);
+  }
 
   ngOnInit(): void {
 
@@ -57,8 +80,23 @@ export class PokemonDetailComponent implements OnInit {
       }),
 
       switchMap(pokemon => {
+        return forkJoin({
+          pokemon: of(pokemon),
+          species: this.http.get<any>(
+            pokemon.species.url
+          )
+        });
+      }),
 
+      switchMap(({ pokemon, species }) => {
         const types = pokemon.types.map((t: any) => t.type.name);
+        const description =
+          species.flavor_text_entries
+            .find((e: any) => e.language.name === 'es')
+            ?.flavor_text
+            .replace(/\n|\f/g, ' ')
+          ??
+          'Sin descripción';
 
         const abilityRequests = pokemon.abilities.map((a: any) =>
           this.abilityService.getAbility(a.ability.name)
@@ -71,10 +109,12 @@ export class PokemonDetailComponent implements OnInit {
 
           abilityDesc: abilityRequests.length
             ? forkJoin(abilityRequests)
-            : of([])
+            : of([]),
+          evolution: this.pokemonService
+            .getEvolutionChain(species.evolution_chain.url)
         }).pipe(
 
-          map(({ types, abilityDesc }) => {
+          map(({ types, abilityDesc, evolution }) => {
 
             const weaknessSet = new Set<string>();
             const strengthSet = new Set<string>();
@@ -139,8 +179,12 @@ export class PokemonDetailComponent implements OnInit {
               };
             });
 
+            const evolutionTree = this.buildEvolutionTree(evolution.chain);
+
             return {
               pokemon,
+              description,
+              evolutionTree,
               strengths: Array.from(strengthSet),
               weaknesses: Array.from(weaknessSet),
               immunities: Array.from(immunitiesSet),
