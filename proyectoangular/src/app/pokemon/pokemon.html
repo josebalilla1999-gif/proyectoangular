@@ -33,112 +33,89 @@
     </div>
   </div>
 
+  <!-- TIPOS -->
   <div class="type-filters">
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('normal', $event)">
       <span class="type-name normal">Normal</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('fire', $event)">
       <span class="type-name fire">Fuego</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('water', $event)">
       <span class="type-name water">Agua</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('electric', $event)">
       <span class="type-name electric">Eléctrico</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('grass', $event)">
       <span class="type-name grass">Planta</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('ice', $event)">
       <span class="type-name ice">Hielo</span>
     </label>
-
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('fighting', $event)">
       <span class="type-name fighting">Lucha</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('poison', $event)">
       <span class="type-name poison">Veneno</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('ground', $event)">
       <span class="type-name ground">Tierra</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('flying', $event)">
       <span class="type-name flying">Volador</span>
     </label>
-
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('psychic', $event)">
       <span class="type-name psychic">Psíquico</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('bug', $event)">
       <span class="type-name bug">Bicho</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('rock', $event)">
       <span class="type-name rock">Roca</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('ghost', $event)">
       <span class="type-name ghost">Fantasma</span>
     </label>
-
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('dragon', $event)">
       <span class="type-name dragon">Dragón</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('dark', $event)">
       <span class="type-name dark">Siniestro</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('steel', $event)">
       <span class="type-name steel">Acero</span>
     </label>
-
     <label class="type-checkbox">
       <input type="checkbox" (change)="toggleType('fairy', $event)">
       <span class="type-name fairy">Hada</span>
     </label>
-
   </div>
-
 </div>
 
+<!-- PAGINACION -->
 <div class="pagination">
   <button (click)="prevPage()" [disabled]="currentPage === 0">
     ◀ Anterior
   </button>
-
   <span>Página {{ currentPage + 1 }}</span>
-
   <button (click)="nextPage()" [disabled]="currentPage === 26">
     Siguiente ▶
   </button>
