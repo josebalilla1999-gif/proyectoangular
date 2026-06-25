@@ -1,0 +1,39 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.trainers,
+.team {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.trainer-card {
+    padding: 15px;
+    border-radius: 12px;
+    background: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.trainer-card:hover {
+    transform: scale(1.05);
+}
+
+.pokemon {
+    width: 120px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px #aaa;
+}
+
+.pokemon img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}

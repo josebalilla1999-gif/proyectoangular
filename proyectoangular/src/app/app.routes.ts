@@ -3,6 +3,7 @@ import { PokemonComponent } from './pokemon/pokemon';
 import { PokemonDetailComponent } from './pokemondetail/pokemondetail';
 import { Quiz } from './quiz/quiz';
 import { Index } from './index';
+import { BattleComponent } from './battle/battle';
 
 export const routes: Routes = [
     {
@@ -20,5 +21,9 @@ export const routes: Routes = [
     {
         path: 'quiz',
         component: Quiz
+    },
+    {
+        path: 'battle',
+        component: BattleComponent
     }
 ];

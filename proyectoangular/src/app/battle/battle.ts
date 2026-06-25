@@ -13,4 +13,4 @@ export interface BattleResult {
   styleUrl: './battle.css',
 })
 
-export class Battle {}
+export class BattleComponent {}

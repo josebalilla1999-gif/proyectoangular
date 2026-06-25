@@ -1,0 +1,23 @@
+<h1>Construye tu equipo</h1>
+<h2>Entrenadores</h2>
+<div class="trainers">
+    <div *ngFor="let trainer of trainers" (click)="selectTrainer(trainer)" class="trainer-card">{{trainer.name}}</div>
+</div>
+<h2>Tu equipo</h2>
+<p>{{team.length}} / 6 Pokémon</p>
+<div class="team">
+    <div *ngFor="let pokemon of team" class="pokemon">
+        <img [src]="pokemon.sprite">
+        <p>{{pokemon.name}}</p>
+    </div>
+</div>
+<h2>Rival</h2>
+<div *ngIf="selectedTrainer">
+    <h3>{{selectedTrainer.name}}</h3>
+    <div class="team">
+        <div *ngFor="let pokemon of selectedTrainer.team" class="pokemon">
+            <img [src]="pokemon.sprite">
+            <p>{{pokemon.name}}</p>
+        </div>
+    </div>
+</div>
