@@ -1228,7 +1228,7 @@ export class PokemonMapperService {
     'mystical-power': 'Poder Místico',
     'raging-fury': 'Erupción de Ira',
     'wave-crash': 'Envite Acuático',
-    'chloroblast': 'Clorofiláser',
+    chloroblast: 'Clorofiláser',
     'mountain-gale': 'Viento Carámbano',
     'victory-dance': 'Danza Triunfal',
     'headlong-rush': 'Arremetida',
