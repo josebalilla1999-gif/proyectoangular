@@ -34,7 +34,9 @@ export class TrainerService {
 
     return forkJoin(
       requests.map(id =>
-        this.pokemonService.getPokemonById(id)
+        this.pokemonService.getPokemonById(id).pipe(
+            map(p => this.mapper.mapPokemon(p))
+        )
       )
     ).pipe(
       map(team => ({
