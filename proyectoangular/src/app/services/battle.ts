@@ -4,150 +4,52 @@ import { Trainer } from '../models/trainer';
 import { BattleResult } from '../models/battle';
 
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root'
 })
 export class BattleService {
 
-calculateBattle(
-playerTeam:Pokemon[],
-enemy:Trainer
-):BattleResult {
-let score = 50;
-const reasons:string[]=[];
+  calculateBattle(
+    playerTeam: Pokemon[],
+    enemy: Trainer
+  ): BattleResult {
 
-playerTeam.forEach(playerPokemon=>{
- enemy.team.forEach(enemyPokemon=>{
- const advantage =
- this.compareTypes(
- playerPokemon,
- enemyPokemon
- );
- score += advantage;
- });
-});
+    let score = 50;
+    const reasons: string[] = [];
 
-score += this.compareStats(
- playerTeam,
- enemy.team
-);
+    playerTeam.forEach(player => {
+      enemy.team.forEach(opponent => {
+        player.types.forEach((t: any) => {
+          const type = t.type?.name ?? t.name;
+          if (opponent.weaknesses.includes(type)) {
+            score += 4;
+          }
+          if (opponent.strengths.includes(type)) {
+            score -= 4;
+          }
+          if (opponent.immunities.includes(type)) {
+            score -= 6;
+          }
+        });
+      });
+    });
+    const playerPower = playerTeam
+      .reduce((a, p) =>
+        a + p.stats.reduce((s: any, x: any) => s + x.base_stat, 0)
+      , 0);
+    const enemyPower = enemy.team
+      .reduce((a, p) =>
+        a + p.stats.reduce((s: any, x: any) => s + x.base_stat, 0)
+      , 0);
+    score += (playerPower - enemyPower) / 80;
+    score = Math.max(5, Math.min(95, score));
+    if (score > 60) reasons.push('Ventaja de tipos');
+    if (score > 50) reasons.push('Buen balance de estadísticas');
+    if (score < 40) reasons.push('Desventaja clara');
 
-score = Math.min(
- 95,
- Math.max(
- 5,
- score
- )
-);
-if(score>60){
-reasons.push(
-'Ventaja general de tipos'
-);
-}
-if(score<40){
-reasons.push(
-'El rival tiene ventaja'
-);
-}
-return {
-winChance:Math.round(score),
-loseChance:
-100-Math.round(score),
-reasons
-};
-}
-
-private compareTypes(
-attacker:Pokemon,
-defender:Pokemon
-):number {
-let result=0;
-attacker.types.forEach((type:any)=>{
-const name =
-type.type?.name ?? type.name;
-
-if(
-this.isStrongAgainst(
- name,
- defender
-)){
-result +=5;
-}
-});
-return result;
-}
-
-private isStrongAgainst(
-type:string,
-defender:Pokemon
-):boolean {
-
-const weaknesses:any={
-fire:[
-'grass',
-'ice',
-'bug',
-'steel'
-],
-
-water:[
-'fire',
-'ground',
-'rock'
-],
-
-grass:[
-'water',
-'ground',
-'rock'
-],
-
-electric:[
-'water',
-'flying'
-],
-
-ground:[
-'electric',
-'fire',
-'poison',
-'rock',
-'steel'
-]
-};
-
-const defenderTypes =
-defender.types.map(
-(t:any)=>
-t.type?.name ?? t.name
-);
-return weaknesses[type]
-?.some(
-(t:string)=>
-defenderTypes.includes(t)
-)
-?? false;
-}
-
-private compareStats(
-player:Pokemon[],
-enemy:Pokemon[]
-):number {
-let playerPower=0;
-let enemyPower=0;
-player.forEach(p=>{
-p.stats.forEach((s:any)=>{
-playerPower +=
-s.base_stat ?? 0;
-});
-});
-enemy.forEach(p=>{
-p.stats.forEach((s:any)=>{
-enemyPower +=
-s.base_stat ?? 0;
-});
-});
-const difference =
-playerPower - enemyPower;
-return difference / 50;
-}
+    return {
+      winChance: Math.round(score),
+      loseChance: 100 - Math.round(score),
+      reasons
+    };
+  }
 }

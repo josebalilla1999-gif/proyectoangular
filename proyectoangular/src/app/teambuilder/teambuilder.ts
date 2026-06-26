@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TrainerService } from '../services/trainer';
+import { BattleService } from '../services/battle';
 import { Trainer } from '../models/trainer';
 import { Pokemon } from '../services/pokemon';
+import { BattleResult } from '../models/battle';
 
 @Component({
   selector: 'app-team-builder',
@@ -11,39 +13,63 @@ import { Pokemon } from '../services/pokemon';
   templateUrl: './teambuilder.html',
   styleUrl: './teambuilder.css'
 })
+export class TeamBuilderComponent implements OnInit {
 
-export class TeamBuilder implements OnInit {
   trainers: Trainer[] = [];
   selectedTrainer?: Trainer;
+
   team: Pokemon[] = [];
+  battleResult?: BattleResult;
 
-  constructor(private trainerService: TrainerService) { }
+  constructor(
+    private trainerService: TrainerService,
+    private battleService: BattleService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
-  ngOnInit() {
-    this.trainerService
-      .getTrainers()
-      .subscribe(data => {
-        this.trainers = data;
+  ngOnInit(): void {
+    this.trainerService.getTrainers()
+      .subscribe({
+        next: (data) => {
+          console.log('TRAINERS OK', data);
+          this.trainers = data;
+          this.cdr.detectChanges();
+        },
+        error: (err) => console.error(err)
       });
   }
 
-  selectPokemon(pokemon: Pokemon) {
-    const exists =
-      this.team.some(
-        p => p.name === pokemon.name
-      );
+  selectTrainer(t: Trainer) {
+    this.selectedTrainer = t;
+  }
+
+  selectTrainerByName(event: Event) {
+    const name = (event.target as HTMLSelectElement).value;
+    this.selectedTrainer = this.trainers.find(t => t.name === name);
+  }
+
+  selectPokemon(p: Pokemon) {
+    const exists = this.team.some(x => x.name === p.name);
     if (exists) {
-      this.team =
-        this.team.filter(
-          p => p.name !== pokemon.name
-        );
-    }
-    else if (this.team.length < 6) {
-      this.team.push(pokemon);
+      this.team = this.team.filter(x => x.name !== p.name);
+    } else if (this.team.length < 6) {
+      this.team.push(p);
     }
   }
 
-  selectTrainer(trainer: Trainer) {
-    this.selectedTrainer = trainer;
+  getRows(team: any[]): any[][] {
+    const rows = [];
+    for (let i = 0; i < team.length; i += 3) {
+      rows.push(team.slice(i, i + 3));
+    }
+    return rows;
+  }
+
+  fight() {
+    if (!this.selectedTrainer || this.team.length !== 6) return;
+    this.battleResult = this.battleService.calculateBattle(
+      this.team,
+      this.selectedTrainer
+    );
   }
 }

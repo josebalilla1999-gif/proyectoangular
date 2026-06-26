@@ -18,11 +18,14 @@ export class TrainerComponent {
   ) { }
 
 
-  ngOnInit() {
-    this.trainerService
-      .getTrainers()
-      .subscribe(data => {
-        this.trainers = data;
+  ngOnInit(): void {
+    this.trainerService.getTrainers()
+      .subscribe({
+        next: (data) => {
+          console.log('TRAINERS OK', data);
+          this.trainers = data;
+        },
+        error: (err) => console.error(err)
       });
   }
 }

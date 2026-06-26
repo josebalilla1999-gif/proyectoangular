@@ -10,31 +10,50 @@ export const TRAINERS: TrainerData[] = [
     name: 'Brock',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Plateada, especialista en Pokémon de tipo Roca, tan fuerte como la misma',
-    pokemonIds: []
+    pokemonIds: [
+      74, //Geodude
+      95  //Onix 
+    ]
   },
   {
     name: 'Misty',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Celeste, especialista en Pokémon de tipo Agua, una sirena con mucho carácter y fuerte personalidad',
-    pokemonIds: []
+    pokemonIds: [
+      120,  //Staryu
+      121,  //Starmie
+    ]
   },
   {
     name: 'Lt. Surge',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Carmín, especialista en Pokémon de tipo Eléctrico, compartió los roles de Teniente y Líder de gimnasio',
-    pokemonIds: []
+    pokemonIds: [
+      100,  //Voltorb
+      25,   //Pikachu
+      26    //Raichu
+    ]
   },
   {
     name: 'Erika',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Azulona, especialista en Pokémon de tipo Planta, amante de la naturaleza',
-    pokemonIds: []
+    pokemonIds: [
+      71,   //Victreebel
+      114,  //Tangela
+      45    //Vileplume
+    ]
   },
   {
     name: 'Koga',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Fucsia, especialista en Pokémon de tipo Veneno, padre de Sachiko y maestro ninja',
-    pokemonIds: []
+    pokemonIds: [
+      109,  //Koffing
+      109,  //Koffing
+      89,   //Muk
+      110   //Weezing
+    ]
   },
   {
     name: 'Sachiko',

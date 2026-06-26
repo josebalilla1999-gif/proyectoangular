@@ -46,6 +46,11 @@ export interface Pokemon {
   height: number;
   weight: number;
   stats: any[];
+  weaknesses: string[];
+  strengths: string[];
+  immunities: string[];
+  description: string;
+  evolutionTree: EvolutionNode;
   base_experience: number;
   species: {
     name: string;

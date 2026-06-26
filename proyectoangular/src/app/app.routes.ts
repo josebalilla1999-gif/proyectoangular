@@ -3,7 +3,7 @@ import { PokemonComponent } from './pokemon/pokemon';
 import { PokemonDetailComponent } from './pokemondetail/pokemondetail';
 import { Quiz } from './quiz/quiz';
 import { Index } from './index';
-import { BattleComponent } from './battle/battle';
+import { TeamBuilderComponent } from './teambuilder/teambuilder';
 
 export const routes: Routes = [
     {
@@ -24,6 +24,6 @@ export const routes: Routes = [
     },
     {
         path: 'battle',
-        component: BattleComponent
+        component: TeamBuilderComponent
     }
 ];

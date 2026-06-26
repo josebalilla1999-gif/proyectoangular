@@ -1,23 +1,61 @@
-<h1>Construye tu equipo</h1>
+<h1>⚔️ Pokémon Battle Simulator</h1>
 <h2>Entrenadores</h2>
-<div class="trainers">
-    <div *ngFor="let trainer of trainers" (click)="selectTrainer(trainer)" class="trainer-card">{{trainer.name}}</div>
-</div>
-<h2>Tu equipo</h2>
-<p>{{team.length}} / 6 Pokémon</p>
-<div class="team">
-    <div *ngFor="let pokemon of team" class="pokemon">
-        <img [src]="pokemon.sprite">
-        <p>{{pokemon.name}}</p>
-    </div>
-</div>
-<h2>Rival</h2>
+<div class="row">
+  <!-- SELECT ENTRENADOR -->
+<h2>Selecciona un entrenador</h2>
+
+<select
+  (change)="selectTrainerByName($event)"
+>
+  <option value="" disabled selected>
+    Elige un entrenador
+  </option>
+  <option
+    *ngFor="let t of trainers"
+    [value]="t.name"
+  >
+    {{ t.name }} - {{ t.category }}
+  </option>
+</select>
+
+<!-- INFO ENTRENADOR -->
 <div *ngIf="selectedTrainer">
-    <h3>{{selectedTrainer.name}}</h3>
-    <div class="team">
-        <div *ngFor="let pokemon of selectedTrainer.team" class="pokemon">
-            <img [src]="pokemon.sprite">
-            <p>{{pokemon.name}}</p>
-        </div>
-    </div>
+  <h2>{{ selectedTrainer.name }}</h2>
+  <p>{{ selectedTrainer.description }}</p>
+</div>
+
+<!-- EQUIPO EN TABLA 2x3 -->
+<h2>Equipo del entrenador</h2>
+<table *ngIf="selectedTrainer" class="team-table">
+  <tr *ngFor="let row of getRows(selectedTrainer.team)">
+    <td *ngFor="let p of row">
+      <div class="pokemon-cell">
+        <img [src]="p.sprite" />
+        <p>{{ p.name }}</p>
+      </div>
+    </td>
+  </tr>
+</table>
+</div>
+<h2>Tu equipo ({{team.length}} / 6)</h2>
+<div class="row">
+  <div
+    class="pokemon"
+    *ngFor="let p of team"
+    >
+    <img [src]="p.sprite">
+    <p>{{ p.name }}</p>
+  </div>
+</div>
+<button (click)="fight()">
+  ⚔️ Combatir
+</button>
+<div class="result" *ngIf="battleResult">
+  <h2>Probabilidad de victoria</h2>
+  <div class="percent">
+    {{ battleResult.winChance }}%
+  </div>
+  <p *ngFor="let r of battleResult.reasons">
+    • {{ r }}
+  </p>
 </div>
