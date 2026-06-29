@@ -25,6 +25,7 @@ export class TrainerService {
     const requests = data.pokemonIds ?? [];
     if (!requests.length) {
       return of({
+        id: data.id,
         name: data.name,
         category: data.category,
         description: data.description,
@@ -40,6 +41,7 @@ export class TrainerService {
       )
     ).pipe(
       map(team => ({
+        id: data.id,
         name: data.name,
         category: data.category,
         description: data.description,

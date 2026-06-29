@@ -44,8 +44,8 @@ export class TeamBuilderComponent implements OnInit {
   }
 
   selectTrainerByName(event: Event) {
-    const name = (event.target as HTMLSelectElement).value;
-    this.selectedTrainer = this.trainers.find(t => t.name === name);
+    const id = Number((event.target as HTMLSelectElement).value);
+    this.selectedTrainer = this.trainers.find(t => t.id == id);
   }
 
   selectPokemon(p: Pokemon) {
