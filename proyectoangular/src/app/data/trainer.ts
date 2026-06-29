@@ -1076,28 +1076,50 @@ export const TRAINERS: TrainerData[] = [
     name: 'Plata',
     category: 'Rival',
     description: 'Rival del protagonista en Johto, hijo de Giovanni, siempre quiere salirse con la suya por las buenas o por las malas',
-    pokemonIds: []
+    pokemonIds: [
+      215,  //Sneasel
+      82,   //Magneton
+      94,   //Gengar
+      169,  //Crobat
+      65,   //Alakazam
+      160   //Feraligatr
+    ]
   },
   {
     id: 94,
     name: 'Blasco',
     category: 'Rival',
     description: 'Rival del protagonista en Hoenn, de salud delicada, es tímido e inseguro, aunque intenta estar a la altura del protagonista',
-    pokemonIds: []
+    pokemonIds: [
+      334,  //Altaria
+      301,  //Delcatty
+      315,  //Roselia
+      82,   //Magneton
+      282   //Gardevoir
+    ]
   },
   {
     id: 95,
     name: 'Israel',
     category: 'Rival',
     description: 'Rival del protagonista en Sinnoh, hijo de Jericor, le pueden las prisas con frecuencia y es demasiado enérgico',
-    pokemonIds: []
+    pokemonIds: [
+      398,  //Staraptor
+      214,  //Heracross
+      143,  //Snorlax
+      78,   //Rapidash
+      407,  //Roserade
+      395   //Empoleon
+    ]
   },
   {
     id: 96,
     name: 'Bel',
     category: 'Rival',
     description: 'Una de los dos rivales del primer protagonista en Teselia, se acaba convirtiendo en ayudante de la profesora',
-    pokemonIds: []
+    pokemonIds: [
+      
+    ]
   },
   {
     id: 97,
