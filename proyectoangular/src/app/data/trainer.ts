@@ -648,145 +648,259 @@ export const TRAINERS: TrainerData[] = [
     name: 'Sally',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Plié, especialista en Pokémon de tipo Hada, veteranísima Líder de gimnasio, eligió a Berto como su sucesor',
-    pokemonIds: []
+    pokemonIds: [
+      10167,  //Weezing-Galar
+      303,    //Mawile
+      468,    //Togekiss
+      10223   //Alcremie G-Max
+    ]
   },
   {
     name: 'Morris',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Auriga, especialista en Pokémon de tipo Roca, hijo de Mel, comparte el puesto de Líder de gimnasio con su madre',
-    pokemonIds: []
+    pokemonIds: [
+      689,  //Barbaracle
+      213,  //Shuckle
+      874,  //Stonjourner
+      10215 //Coalossal G-Max
+    ]
   },
   {
     name: 'Mel',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Auriga, especialista en Pokémon de tipo Hielo, madre de Morris, comparte el puesto de Líder de gimnasio con su hijo',
-    pokemonIds: []
+    pokemonIds: [
+      873,    //Frosmoth
+      10177,  //Darmanitan-Galar
+      875,    //Eiscue
+      10204   //Lapras G-Max
+    ]
   },
   {
     name: 'Nerio',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Crampón, especialista en Pokémon de tipo Siniestro, hermano mayor de Roxy, reniega de la mecánica Dinamax',
-    pokemonIds: []
+    pokemonIds: [
+      560,  //Scrafty
+      687,  //Malamar
+      435,  //Skuntank
+      862   //Obstagoon
+    ]
   },
   {
     name: 'Roy',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Artejo, especialista en Pokémon de tipo Dragón, el Líder más fuerte, especialista en climas y combates dobles',
-    pokemonIds: []
+    pokemonIds: [
+      526,  //Gigalith
+      330,  //Flygon
+      844,  //Sandaconda
+      10225 //Duraludon G-Max
+    ]
   },
   {
     name: 'Berto',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Plié, especialista en Pokémon de tipo Hada, anterior rival del protagonista de los juegos de Galar, tomó el relevo de Sally al jubilarse esta',
-    pokemonIds: []
+    pokemonIds: [
+      303,    //Mawile
+      282,    //Gardevoir
+      10163,  //Rapidash-Galar
+      10221   //Hatterene G-Max
+    ]
   },
   {
     name: 'Roxy',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Crampón, especialista en Pokémon de tipo Siniestro, anterior rival del protagonista de los juegos de Galar, tomó el relevo de Nerio como Líder de gimnasio',
-    pokemonIds: []
+    pokemonIds: [
+      510,  //Liepard
+      454,  //Toxicroak
+      560,  //Scrafty
+      877,  //Morpeko
+      10222 //Grimmsnarl G-Max
+    ]
   },
   {
     name: 'Sófora',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio en la segunda división de Galar, especialista en Pokémon de tipo Veneno, tan mona como venenosa',
-    pokemonIds: []
+    pokemonIds: [
+      452,    //Drapion
+      10167,  //Weezing-Galar
+      545,    //Scolipede
+      10172,  //Slowking-Galar
+    ]
   },
   {
     name: 'Dreo',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio en la segunda división de Galar, especialista en Pokémon de tipo Psíquico, poseedor de poderes psíquicos',
-    pokemonIds: []
+    pokemonIds: [
+      10163,  //Rapidash-Galar
+      528,    //Swoobat
+      65,     //Alakazam
+      10165   //Slowbro-Galar
+    ]
   },
   {
     name: 'Araceli',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Pirotín, especialista en Pokémon de tipo Bicho, pastelera que se pasa el día preparando dulces',
-    pokemonIds: []
+    pokemonIds: [
+      919,  //Nymble
+      917,  //Tarountula
+      216   //Teddiursa
+    ]
   },
   {
     name: 'Brais',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Altamía, especialista en Pokémon de tipo Planta, artista intelectual que tuvo algunas etapas de bloqueos artísticos',
-    pokemonIds: []
+    pokemonIds: [
+      548,  //Petilil
+      928,  //Smoliv
+      185   //Sudowoodo
+    ]
   },
   {
     name: 'e-Nigma',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Leudal, especialista en Pokémon de tipo Eléctrico, streamer e influencer, presentadora de su programa Khé-Nigma TV',
-    pokemonIds: []
+    pokemonIds: [
+      940,  //Wattrel
+      939,  //Bellibolt
+      404,  //Luxio
+      429   //Mismagius
+    ]
   },
   {
     name: 'Fuco',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Cántara, especialista en Pokémon de tipo Agua, conocido como el Chef Torrencial, le encantan las subastas',
-    pokemonIds: []
+    pokemonIds: [
+      976,  //Veluza
+      961,  //Wugtrio
+      740   //Crabominable
+    ]
   },
   {
     name: 'Laureano',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Mestura, especialista en Pokémon de tipo Normal, oficinista que también tiene el cargo de Alto Mando de la Liga de Paldea',
-    pokemonIds: []
+    pokemonIds: [
+      775,  //Komala
+      982,  //Dudunsparce
+      398   //Staraptor
+    ]
   },
   {
     name: 'Lima',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Hozkailu, especialista en Pokémon de tipo Fantasma, reconocida rapera que lleva 40 años en los escenarios',
-    pokemonIds: []
+    pokemonIds: [
+      354,  //Banette
+      778,  //Mimikyu
+      972,  //Houndstone
+      10184 //Toxtricity Low-Key
+    ]
   },
   {
     name: 'Tuli',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Alforno, especialista en Pokémon de tipo Psíquico, refinada maquilladora que piensa que mujer y belleza son sinónimos',
-    pokemonIds: []
+    pokemonIds: [
+      981,  //Farigiraf
+      282,  //Gardevoir
+      956,  //Espathra
+      671   //Florges
+    ]
   },
   {
     name: 'Grusha',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Sierra Napada, especialista en Pokémon de tipo Hielo, previamente fue un snowboarder profesional, conocido como el Cero Absoluto',
-    pokemonIds: []
+    pokemonIds: [
+      873,  //Frosmoth
+      614,  //Beartic
+      975,  //Cetitan
+      334   //Altaria
+    ]
   },
   {
     name: 'Liam',
     category: 'Capitán',
     description: 'Capitán de la prueba de la Cueva Sotobosque, especialista en Pokémon de tipo Normal, todo un ídolo para los estudiantes de la Escuela de Entrenadores',
-    pokemonIds: []
+    pokemonIds: [
+      735,  //Gumshoos
+      235,  //Smeargle
+      775,  //Komala
+      10093 //Raticate-Alola-Totem
+    ]
   },
   {
     name: 'Nereida',
     category: 'Capitán',
     description: 'Capitana de la prueba de la Colina Saltagua, especialista en Pokémon de tipo Agua, amiga de Lulú, le encanta gastar bromas y pescadora curtida',
-    pokemonIds: []
+    pokemonIds: [
+      171,  //Lanturn
+      91,   //Cloyster
+      752,  //Araquanid
+      10127 //Wishiwashi-School
+    ]
   },
   {
     name: 'Kiawe',
     category: 'Capitán',
     description: 'Capitán de la prueba del Área Volcánica del Wela, especialista en Pokémon de tipo Fuego, estudioso de las danzas tradicionales de la región de Alola',
-    pokemonIds: []
+    pokemonIds: [
+      59,     //Arcanine
+      663,    //Talonflame
+      10115,  //Marowak-Alola
+      10129   //Salazzle-Totem
+    ]
   },
   {
     name: 'Lulú',
     category: 'Capitán',
     description: 'Capitana de la prueba de la Jungla Umbría, especialista en Pokémon de tipo Planta, le encanta cocinar, aunque su talento como cocinera es altamente discutible',
-    pokemonIds: []
+    pokemonIds: [
+      709,  //Trevenant
+      756,  //Shiinotic
+      763,  //Tsareena
+      10128 //Lurantis-Totem
+    ]
   },
   {
     name: 'Chris',
     category: 'Capitán',
     description: 'Capitán de la prueba del Observatorio de Hokulani, especialista en Pokémon de tipo Eléctrico, es también el encargado de la Festi Plaza',
-    pokemonIds: []
+    pokemonIds: [
+      777,    //Togedemaru
+      462,    //Magnezone
+      10111,  //Golem-Alola
+      10122   //Vikavolt-Totem
+    ]
   },
   {
     name: 'Zarala',
     category: 'Capitán',
     description: 'Capitana de la prueba del antiguo Supermercado Ultraganga, especialista en Pokémon de tipo Fantasma, también miembro del Alto Mando en la novedosa Liga de Alola',
-    pokemonIds: []
+    pokemonIds: [
+      94,   //Gengar
+      10144 //Mimikyu-Totem
+    ]
   },
   {
     name: 'Rika',
     category: 'Capitán',
     description: 'Capitana de la prueba de la Aldea Marina, especialista en Pokémon de tipo Hada, al principio desinteresada pero con el paso del tiempo se empezó a tomar en serio su rol de Capitana',
-    pokemonIds: []
+    pokemonIds: [
+      303,  //Mawile
+      210,  //Granbull
+      10150 //Ribombee-Totem
+    ]
   },
   {
     name: 'Mostaz',
