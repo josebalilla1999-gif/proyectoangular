@@ -59,217 +59,375 @@ export const TRAINERS: TrainerData[] = [
     name: 'Sachiko',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Fucsia, especialista en Pokémon de tipo Veneno, hija de Koga, tomó el puesto de líder de gimnasio al convertirse su padre en miembro del Alto Mando',
-    pokemonIds: []
+    pokemonIds: [
+      169,  //Crobat
+      110,  //Weezing
+      168,  //Ariados
+      168,  //Ariados
+      49    //Venomoth
+    ]
   },
   {
     name: 'Sabrina',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Azafrán, especialista en Pokémon de tipo Psíquico, conocida por su inexpresividad y su conexión mental con sus Pokémon',
-    pokemonIds: []
+    pokemonIds: [
+      64,   //Kadabra
+      122,  //Mr Mime
+      49,   //Venomoth
+      65    //Alakazam
+    ]
   },
   {
     name: 'Blaine',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Isla Canela, especialista en Pokémon de tipo Fuego, un científico experto en los acertijos',
-    pokemonIds: []
+    pokemonIds: [
+      58, //Growlithe
+      77, //Ponyta
+      78, //Rapidash
+      59, //Arcanine
+    ]
   },
   {
     name: 'Giovanni',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Verde, especialista en Pokémon de tipo Tierra, además de ser Líder de Gimnasio es el jefe del pokemonIds Rocket',
-    pokemonIds: []
+    pokemonIds: [
+      111,  //Rhyhorn
+      51,   //Dugtrio
+      31,   //Nidoqueen
+      34,   //Nidoking
+      112   //Rhydon
+    ]
   },
   {
     name: 'Azul',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Verde después de la desbandada del pokemonIds Rocket, tiene mucha variedad de tipos',
-    pokemonIds: []
+    pokemonIds: [
+      18,   //Pidgeot
+      65,   //Alakazam
+      112,  //Rhydon
+      130,  //Gyarados
+      103,  //Exeggutor
+      59    //Arcanine
+    ]
   },
   {
     name: 'Pegaso',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Malva, especialista en Pokémon de tipo Volador, elegante y competitivo',
-    pokemonIds: []
+    pokemonIds: [
+      16, //Pidgey
+      17  //Pidgeotto
+    ]
   },
   {
     name: 'Antón',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Azalea, especialista en Pokémon de tipo Bicho, cazabichos y enciclopedia andante',
-    pokemonIds: []
+    pokemonIds: [
+      11,   //Metapod
+      14,   //Kakuna
+      123   //Scyther
+    ]
   },
   {
     name: 'Blanca',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Trigal, especialista en Pokémon de tipo Normal, joven y caprichosa, pero cuidado con su Miltank',
-    pokemonIds: []
+    pokemonIds: [
+      35,   //Clefairy
+      241   //Miltank
+    ]
   },
   {
     name: 'Morti',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Iris, especialista en Pokémon de tipo Fantasma, místico adivino del futuro',
-    pokemonIds: []
+    pokemonIds: [
+      92, //Gastly
+      93, //Haunter
+      94, //Gengar
+      93  //Haunter
+    ]
   },
   {
     name: 'Aníbal',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Orquídea, especialista en Pokémon de tipo Lucha, siempre está meditando en su cascada',
-    pokemonIds: []
+    pokemonIds: [
+      57, //Primeape
+      62  //Poliwrath
+    ]
   },
   {
     name: 'Yasmina',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Olivo, especialista en Pokémon de tipo Acero, tiene una estrecha relación con el Ampharos encargado del faro',
-    pokemonIds: []
+    pokemonIds: [
+      81,   //Magnemite
+      81,   //Magnemite
+      208   //Steelix
+    ]
   },
   {
     name: 'Fredo',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Caoba, especialista en Pokémon de tipo Hielo, maestro del crudo invierno',
-    pokemonIds: []
+    pokemonIds: [
+      86,   //Seel
+      87,   //Dewgong
+      221   //Piloswine
+    ]
   },
   {
     name: 'Débora',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Endrino, especialista en Pokémon de tipo Dragón, prima de Lance, no basta con derrotarla para obtener su medalla',
-    pokemonIds: []
+    pokemonIds: [
+      148,  //Dragonair
+      148,  //Dragonair
+      148,  //Dragonair
+      230   //Kingdra
+    ]
   },
   {
     name: 'Petra',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Férrica, especialista en Pokémon de tipo Roca, alumna aventajada de la Escuela de Entrenadores',
-    pokemonIds: []
+    pokemonIds: [
+      74, //Geodude
+      299 //Nosepass
+    ]
   },
   {
     name: 'Marcial',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Azuliza, especialista en Pokémon de tipo Lucha, un surfista considerado un maremoto',
-    pokemonIds: []
+    pokemonIds: [
+      66, //Machop
+      296 //Makuhita
+    ]
   },
   {
     name: 'Erico',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Malvalona, especialista en Pokémon de tipo Eléctrico, le encanta poner trampas eléctricas en su gimnasio',
-    pokemonIds: []
+    pokemonIds: [
+      100,  //Voltorb
+      309,  //Electrike
+      82,   //Magneton
+      310   //Manectric
+    ]
   },
   {
     name: 'Candela',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Pueblo Lavacalda, especialista en Pokémon de tipo Fuego, mejor no acercarse mucho, que quema',
-    pokemonIds: []
+    pokemonIds: [
+      218,  //Slugma
+      322,  //Numel
+      324   //Torkoal
+    ]
   },
   {
     name: 'Norman',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Petalia, especialista en Pokémon de tipo Normal, padre del personaje protagonista de Hoenn',
-    pokemonIds: []
+    pokemonIds: [
+      289,  //Slaking
+      288,  //Vigoroth
+      289   //Slaking
+    ]
   },
   {
     name: 'Alana',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Arborada, especialista en Pokémon de tipo Volador, puede ver el ir y venir de las corrientes del viento',
-    pokemonIds: []
+    pokemonIds: [
+      333,  //Swablu
+      357,  //Tropius
+      279,  //Pelipper
+      227,  //Skarmory
+      334   //Altaria
+    ]
   },
   {
     name: 'Vito y Leti',
     category: 'Líder de gimnasio',
     description: 'Líderes de gimnasio de Ciudad Algaria, especialistas en Pokémon de tipo Psíquico, hermanos mellizos, parecidos como el sol a la luna',
-    pokemonIds: []
+    pokemonIds: [
+      344,  //Claydol
+      178,  //Xatu
+      337,  //Lunatone
+      338   //Solrock
+    ]
   },
   {
     name: 'Plubio',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Arrecípolis, especialista en Pokémon de tipo Agua, acabaría convirtiéndose brevemente en Campeón de la Liga de Hoenn',
-    pokemonIds: []
+    pokemonIds: [
+      370,  //Luvdisc
+      340,  //Whiscash
+      364,  //Sealeo
+      119,  //Seaking
+      350   //Milotic
+    ]
   },
   {
     name: 'Galano',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Arrecípolis, especialista en Pokémon de tipo Agua, cogió el relevo de Plubio como Líder de gimnasio',
-    pokemonIds: []
+    pokemonIds: [
+      370,  //Luvdisc
+      340,  //Whiscash
+      364,  //Sealeo
+      342,  //Crawdaunt
+      230   //Kingdra
+    ]
   },
   {
     name: 'Roco',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Pirita, especialista en Pokémon de tipo Roca, minero e hijo de Acerón',
-    pokemonIds: []
+    pokemonIds: [
+      74, //Geodude
+      95, //Onix
+      408 //Cranidos
+    ]
   },
   {
     name: 'Gardenia',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Vetusta, especialista en Pokémon de tipo Planta, adora los Pokémon de tipo Planta pero le tiene miedo a los fantasmas',
-    pokemonIds: []
+    pokemonIds: [
+      387,  //Turtwig
+      421,  //Cherrim
+      407   //Roserade
+    ]
   },
   {
     name: 'Fantina',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Corazón, especialista en Pokémon de tipo Fantasma, toda una celebridad en los Concursos Pokémon',
-    pokemonIds: []
+    pokemonIds: [
+      355,  //Duskull
+      93,   //Haunter
+      429   //Mismagius
+    ]
   },
   {
     name: 'Brega',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Rocavelo, especialista en Pokémon de tipo Lucha, luchadora y amiga de Inverna',
-    pokemonIds: []
+    pokemonIds: [
+      307,  //Meditite
+      67,   //Machoke
+      448   //Lucario
+    ]
   },
   {
     name: 'Mananti',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Pradera, especialista en Pokémon de tipo Agua, más conocido como Mananti el Destructor',
-    pokemonIds: []
+    pokemonIds: [
+      130,  //Gyarados
+      195,  //Quagsire
+      419   //Floatzel
+    ]
   },
   {
     name: 'Acerón',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Canal, especialista en Pokémon de tipo Acero, adora la defensa y padre de Roco',
-    pokemonIds: []
+    pokemonIds: [
+      82,   //Magneton
+      208,  //Steelix
+      411   //Bastiodon
+    ]
   },
   {
     name: 'Inverna',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Puntaneva, especialista en Pokémon de tipo Hielo, chica diamantina amiga de Brega',
-    pokemonIds: []
+    pokemonIds: [
+      215,  //Sneasel
+      221,  //Piloswine
+      460,  //Abomasnow
+      478   //Froslass
+    ]
   },
   {
     name: 'Lectro',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Marina, especialista en Pokémon de tipo Eléctrico, amigo de Fausto y quizá, al mismo nivel que un Alto Mando',
-    pokemonIds: []
+    pokemonIds: [
+      135,  //Jolteon
+      26,   //Raichu
+      405,  //Luxray
+      466   //Electivire
+    ]
   },
   {
     name: 'Millo',
     category: 'Líder de gimnasio',
     description: 'Uno de los tres Líderes de gimnasio de Ciudad Gres, especialista en Pokémon de tipo Planta',
-    pokemonIds: []
+    pokemonIds: [
+      506,  //Lillipup
+      511   //Pansage
+    ]
   },
   {
     name: 'Zeo',
     category: 'Líder de gimnasio',
     description: 'Uno de los tres Líderes de gimnasio de Ciudad Gres, especialista en Pokémon de tipo Fuego',
-    pokemonIds: []
+    pokemonIds: [
+      506,  //Lillipup
+      513   //Pansear
+    ]
   },
   {
     name: 'Maíz',
     category: 'Líder de gimnasio',
     description: 'Uno de los tres Líderes de gimnasio de Ciudad Gres, especialista en Pokémon de tipo Agua',
-    pokemonIds: []
+    pokemonIds: [
+      506,  //Lillipup
+      515   //Panpour
+    ]
   },
   {
     name: 'Aloe',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Esmalte, especialista en Pokémon de tipo Normal, regente del museo de la ciudad',
-    pokemonIds: []
+    pokemonIds: [
+      507,  //Herdier
+      505   //Watchog
+    ]
   },
   {
     name: 'Camus',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Porcelana, especialista en Pokémon de tipo Bicho, un artista que recibe su inspiración de los insectos',
-    pokemonIds: []
+    pokemonIds: [
+      557,  //Dwebble
+      616,  //Shelmet
+      588,  //Karrablast
+      542   //Leavanny
+    ]
   },
   {
     name: 'Camila',
     category: 'Líder de gimnasio',
     description: 'Líder de gimnasio de Ciudad Mayólica, especialista en Pokémon de tipo Eléctrico, supermodelo amiga de Gerania',
-    pokemonIds: []
+    pokemonIds: [
+      587,  //Emolga
+      180,  //Flaaffy
+      595,  //Joltik
+      523   //Zebstrika
+    ]
   },
   {
     name: 'Yakón',
