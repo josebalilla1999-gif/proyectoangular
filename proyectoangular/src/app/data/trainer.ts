@@ -1272,35 +1272,59 @@ export const TRAINERS: TrainerData[] = [
     name: 'Corin',
     category: 'Rival',
     description: 'Rival del protagonista en la Academia Arándano, hermana mayor de Cass, tiene mucho carácter y suele ser egoísta, se preocupa mucho por su hermano, aunque no lo parezca',
-    pokemonIds: []
+    pokemonIds: [
+      262,  //Mightyena
+      733,  //Toucannon
+      877,  //Morpeko
+      38,   //Ninetales
+      560,  //Scrafty
+      1013  //Sinistcha
+    ]
   },
   {
     id: 109,
     name: 'Kaudan',
     category: 'Kahuna',
     description: 'Kahuna de la isla de Melemele en la región de Alola, especialista en Pokémon de tipo Lucha, es el abuelo de Tilo y antiguo miembro del Alto Mando',
-    pokemonIds: []
+    pokemonIds: [
+      56,   //Mankey
+      296,  //Makuhita
+      739   //Crabrawler
+    ]
   },
   {
     id: 110,
     name: 'Mayla',
     category: 'Kahuna',
     description: 'Kahuna de la isla de Akala en la región de Alola, especialista en Pokémon de tipo Roca, regenta una joyería y es también miembro del Alto Mando',
-    pokemonIds: []
+    pokemonIds: [
+      299,  //Nosepass
+      525,  //Boldore
+      10126 //Lycanroc-Midnight
+    ]
   },
   {
     id: 111,
     name: 'Denio',
     category: 'Kahuna',
     description: 'Kahuna de la isla de Ula-Ula en la región de Alola, especialista en Pokémon de tipo Siniestro, policía y kahuna al mismo tiempo, aunque completamente desinteresado',
-    pokemonIds: []
+    pokemonIds: [
+      302,  //Sableye
+      552,  //Krokorok
+      10108 //Persian-Alola
+    ]
   },
   {
     id: 112,
     name: 'Hela',
     category: 'Kahuna',
     description: 'Kahuna de la isla de Poni en la región de Alola, especialista en Pokémon de tipo Tierra, recién proclamada kahuna, quiere estar a la altura de su fallecido abuelo, el anterior kahuna',
-    pokemonIds: []
+    pokemonIds: [
+      623,  //Golurk
+      423,  //Gastrodon
+      330,  //Flygon
+      750   //Mudsdale
+    ]
   },
   {
     id: 113,
