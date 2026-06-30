@@ -1118,7 +1118,12 @@ export const TRAINERS: TrainerData[] = [
     category: 'Rival',
     description: 'Una de los dos rivales del primer protagonista en Teselia, se acaba convirtiendo en ayudante de la profesora',
     pokemonIds: [
-      
+      508,  //Stoutland
+      516,  //Simipour
+      518,  //Musharna
+      620,  //Mienshao
+      609,  //Chandelure
+      497   //Serperior
     ]
   },
   {
@@ -1126,77 +1131,141 @@ export const TRAINERS: TrainerData[] = [
     name: 'Cheren',
     category: 'Rival',
     description: 'Uno de los dos rivales del primer protagonista en Teselia, amigo de la infancia de este',
-    pokemonIds: []
+    pokemonIds: [
+      510,  //Liepard
+      514,  //Simisear
+      521,  //Unfezant
+      526,  //Gigalith
+      612,  //Haxorus
+      503   //Samurott
+    ]
   },
   {
     id: 98,
     name: 'N',
     category: 'Rival',
     description: 'El gran rival del primer protagonista en Teselia, miembro del Equipo Plasma, dice que puede comprender a los Pokémon solo con mirarlos',
-    pokemonIds: []
+    pokemonIds: [
+      643,  //Reshiram
+      565,  //Carracosta
+      584,  //Vanilluxe
+      567,  //Archeops
+      571,  //Zoroark
+      601   //Klinklang
+    ]
   },
   {
     id: 99,
     name: 'Matís',
     category: 'Rival',
     description: 'Rival y vecino del segundo protagonista en Teselia, ligeramente mayor que este, tiene una hermana menor, odia fervientemente al Equipo Plasma debido a que estos le robaron un Purrloin a su hermana',
-    pokemonIds: []
+    pokemonIds: [
+      521,  //Unfezant
+      512,  //Simisage
+      626,  //Bouffalant
+      330,  //Flygon
+      604,  //Eelektross
+      500   //Emboar
+    ]
   },
   {
     id: 100,
     name: 'Xana',
     category: 'Rival',
     description: 'Una de los rivales del protagonista en Kalos, muy activa y apasionada por los combates, a la par que bastante insistente',
-    pokemonIds: []
+    pokemonIds: [
+      301,  //Delcatty
+      706,  //Goodra
+      655   //Delphox
+    ]
   },
   {
     id: 101,
     name: 'Benigno',
     category: 'Rival',
     description: 'Uno de los rivales del protagonista en Kalos, siempre trata de encontrar una forma de unir sus dos pasiones, los Pokémon y bailar',
-    pokemonIds: []
+    pokemonIds: [
+      663,  //Talonflame
+      407,  //Roserade
+      342   //Crawdaunt
+    ]
   },
   {
     id: 102,
     name: 'Trovato',
     category: 'Rival',
     description: 'Uno de los rivales del protagonista en Kalos, su principal meta es registrar la mayor cantidad posible de Pokémon en su Pokédex',
-    pokemonIds: []
+    pokemonIds: [
+      26,   //Raichu
+      142,  //Aerodactyl
+      671   //Florges
+    ]
   },
   {
     id: 103,
     name: 'Tilo',
     category: 'Rival',
     description: 'Uno de los rivales del protagonista en Alola, nieto de Kaudan, su sueño es conseguir superarle algún día',
-    pokemonIds: []
+    pokemonIds: [
+      10100,  //Raichu-Alola
+      134,    //Vaporeon
+      128,    //Tauros
+      715,    //Noivern
+      740,    //Crabominable
+      724     //Decidueye
+    ]
   },
   {
     id: 104,
     name: 'Gladio',
     category: 'Rival',
     description: 'Uno de los rivales del protagonista en Alola, hijo de Samina y de Polo y hermano mayor de Lylia, mantiene un lazo especial con su Pokémon Silvally',
-    pokemonIds: []
+    pokemonIds: [
+      169,  //Crobat
+      571,  //Zoroark
+      474,  //Porygon-Z
+      448,  //Lucario
+      6,    //Charizard
+      773   //Silvally
+    ]
   },
   {
     id: 105,
     name: 'Paul',
     category: 'Rival',
     description: 'Rival del protagonista de los juegos de Galar, hermano pequeño de Lionel, tiene como objetivo sucederle como Campeón',
-    pokemonIds: []
+    pokemonIds: [
+      832,    //Dubwool
+      143,    //Snorlax
+      812,    //Rillaboom
+      10212,  //Corviknight G-Max
+      10188   //Zacian-Crowned
+    ]
   },
   {
     id: 106,
     name: 'Berto',
     category: 'Rival',
     description: 'Rival del protagonista de los juegos de Galar, reclutado por Sally para sucederla como Líder de gimnasio, aunque su tipo especializado es el tipo Psíquico',
-    pokemonIds: []
+    pokemonIds: [
+      578,    //Duosion
+      575,    //Gothorita
+      10162,  //Ponyta-Galar
+      857     //Hattrem
+    ]
   },
   {
     id: 107,
     name: 'Roxy',
     category: 'Rival',
     description: 'Rival del protagonista de los juegos de Galar, hermana menor de Nerio, siempre tiene miembros del pokemonIds Yell alrededor suya cuando combate',
-    pokemonIds: []
+    pokemonIds: [
+      510,  //Liepard
+      454,  //Toxicroak
+      560,  //Scrafty
+      877,  //Morpeko
+      861   //Grimmsnarl
+    ]
   },
   {
     id: 108,
