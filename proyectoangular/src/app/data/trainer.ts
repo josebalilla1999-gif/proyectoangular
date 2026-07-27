@@ -1331,28 +1331,52 @@ export const TRAINERS: TrainerData[] = [
     name: 'Lorelei',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Kanto, especialista en Pokémon de tipo Hielo, fría y calculadora en los combates',
-    pokemonIds: []
+    pokemonIds: [
+      87,   //Dewgong
+      91,   //Cloyster
+      80,   //Slowbro
+      124,  //Jynx
+      131   //Lapras
+    ]
   },
   {
     id: 114,
     name: 'Bruno',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Kanto y Johto, especialista en Pokémon de tipo Lucha, prioriza la fuerza y la resistencia',
-    pokemonIds: []
+    pokemonIds: [
+      95,   //Onix
+      107,  //Hitmonchan
+      106,  //Hitmonlee
+      62,   //Poliwrath
+      68    //Machamp
+    ]
   },
   {
     id: 115,
     name: 'Agatha',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Kanto, especialista en Pokémon de tipo Fantasma, es una inspiración para todos los entrenadores veteranos de la región',
-    pokemonIds: []
+    pokemonIds: [
+      94, //Gengar
+      42, //Golbat
+      93, //Haunter
+      24, //Arbok
+      94  //Gengar
+    ]
   },
   {
     id: 116,
     name: 'Lance',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Kanto, especialista en Pokémon de tipo Dragón, acabaría convirtiéndose en Campeón de la Liga de Johto',
-    pokemonIds: []
+    pokemonIds: [
+      130,  //Gyarados
+      148,  //Dragonair
+      148,  //Dragonair
+      142,  //Aerodactyl
+      149   //Dragonite
+    ]
   },
   {
     id: 117,
