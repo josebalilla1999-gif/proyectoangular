@@ -1383,84 +1383,152 @@ export const TRAINERS: TrainerData[] = [
     name: 'Mento',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Johto, especialista en Pokémon de tipo Psíquico, su vestimenta y antifaz resaltan en su aspecto',
-    pokemonIds: []
+    pokemonIds: [
+      178,  //Xatu
+      103,  //Exeggutor
+      80,   //Slowbro
+      124,  //Jynx
+      178   //Xatu
+    ]
   },
   {
     id: 118,
     name: 'Koga',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Johto, especialista en Pokémon de tipo Veneno, padre de Sachiko y maestro ninja',
-    pokemonIds: []
+    pokemonIds: [
+      168,  //Ariados
+      205,  //Forretress
+      89,   //Muk
+      49,   //Venomoth
+      169   //Crobat
+    ]
   },
   {
     id: 119,
     name: 'Karen',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Johto, especialista en Pokémon de tipo Siniestro, considera que los buenos entrenadores son capaces de ganar con sus Pokémon favoritos',
-    pokemonIds: []
+    pokemonIds: [
+      197,  //Umbreon
+      45,   //Vileplume
+      198,  //Murkrow
+      94,   //Gengar
+      229   //Houndoom
+    ]
   },
   {
     id: 120,
     name: 'Sixto',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Hoenn, especialista en Pokémon de tipo Siniestro, de actitud desenfadada y pasión por la moda y los combates Pokémon',
-    pokemonIds: []
+    pokemonIds: [
+      262,  //Mightyena
+      275,  //Shiftry
+      332,  //Cacturne
+      319,  //Sharpedo
+      359   //Absol
+    ]
   },
   {
     id: 121,
     name: 'Fátima',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Hoenn, especialista en Pokémon de tipo Fantasma, participa en algunos eventos fantasmagóricos previos a su combate',
-    pokemonIds: []
+    pokemonIds: [
+      356,  //Dusclops
+      354,  //Banette
+      302,  //Sableye
+      354,  //Banette
+      356   //Dusclops
+    ]
   },
   {
     id: 122,
     name: 'Nívea',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Hoenn, especialista en Pokémon de tipo Hielo, proveniente de una región lejana, o eso dice ella',
-    pokemonIds: []
+    pokemonIds: [
+      362,  //Glalie
+      364,  //Sealeo
+      364,  //Sealeo
+      362,  //Glalie
+      365   //Walrein
+    ]
   },
   {
     id: 123,
     name: 'Dracón',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Hoenn, especialista en Pokémon de tipo Dragón, de avanzada edad y con vestimenta y aspecto similares a los de un pirata',
-    pokemonIds: []
+    pokemonIds: [
+      372,  //Shelgon
+      334,  //Altaria
+      330,  //Flygon
+      330,  //Flygon
+      373   //Salamence
+    ]
   },
   {
     id: 124,
     name: 'Alecrán',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Sinnoh, especialista en Pokémon de tipo Bicho, se rumorea que renunció a ser Líder de gimnasio para ocupar el cargo de Alto Mando',
-    pokemonIds: []
+    pokemonIds: [
+      469,  //Yanmega
+      212,  //Scizor
+      214,  //Heracross
+      416,  //Vespiquen
+      452   //Drapion
+    ]
   },
   {
     id: 125,
     name: 'Gaia',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Sinnoh, especialista en Pokémon de tipo Tierra, ayuda a investigar acerca del Mundo Distorsión',
-    pokemonIds: []
+    pokemonIds: [
+      340,  //Whiscash
+      472,  //Gliscor
+      450,  //Hippowdon
+      76,   //Golem
+      464   //Rhyperior
+    ]
   },
   {
     id: 126,
     name: 'Fausto',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Sinnoh, especialista en Pokémon de tipo Fuego, amigo de Lectro, entrenan juntos bastante a menudo',
-    pokemonIds: []
+    pokemonIds: [
+      229,  //Houndoom
+      136,  //Flareon
+      78,   //Rapidash
+      392,  //Infernape
+      467   //Magmortar
+    ]
   },
   {
     id: 127,
     name: 'Delos',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Sinnoh, especialista en Pokémon de tipo Psíquico, es un gran estratega y bastante solidario',
-    pokemonIds: []
+    pokemonIds: [
+      122,  //Mr Mime
+      196,  //Espeon
+      437,  //Bronzong
+      65,   //Alakazam
+      475   //Gallade
+    ]
   },
   {
     id: 128,
     name: 'Anís',
     category: 'Alto Mando',
     description: 'Alto Mando de la Liga Pokémon de Teselia, especialista en Pokémon de tipo Fantasma, escritora a la que le gusta escribir historias fantasmagóricas',
-    pokemonIds: []
+    pokemonIds: [
+      
+    ]
   },
   {
     id: 129,
